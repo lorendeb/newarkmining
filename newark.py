@@ -46,20 +46,38 @@ for flight_num in flight_number_list:
         temp_list.append(detail.text.strip('\n\t'))
     detail_list.append(temp_list)
 
+GATE_DEPARTURE_INDEX = 2
+HOUR_ARRIVAL_INDEX = 3
+TERMINAL_ARRIVAL_INDEX = 4
+GATE_ARRIVAL_INDEX = 5
+result_list = []
+for index in range(len(destination_list)):
+    temp = []
+    temp.append(destination_list[index])
+    temp.append(airline_list[index])
+    temp.append(flight_number_list[index])
+    temp.append(hour_departure_list[index])
+    temp.append(detail_list[index][HOUR_ARRIVAL_INDEX])
+    temp.append(terminal_departure_list[index])
+    temp.append(detail_list[index][GATE_DEPARTURE_INDEX])
+    temp.append(detail_list[index][TERMINAL_ARRIVAL_INDEX])
+    temp.append(detail_list[index][GATE_ARRIVAL_INDEX])
+    temp.append(status_list[index])
+    result_list.append(temp)
 
-
-
-print(detail_list)
-print(destination_list)
-print(hour_departure_list)
-print(flight_number_list)
-print(airline_list)
-print(terminal_departure_list)
-print(status_list)
-print(len(destination_list))
-print(len(hour_departure_list))
-print(len(flight_number_list))
-print(len(airline_list))
-print(len(terminal_departure_list))
-print(len(status_list))
-
+#
+#
+# print(detail_list)
+# print(destination_list)
+# print(hour_departure_list)
+# print(flight_number_list)
+# print(airline_list)
+# print(terminal_departure_list)
+# print(status_list)
+# print(len(destination_list))
+# print(len(hour_departure_list))
+# print(len(flight_number_list))
+# print(len(airline_list))
+# print(len(terminal_departure_list))
+# print(len(status_list))
+#
