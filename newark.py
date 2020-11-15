@@ -25,6 +25,9 @@ airline_list = []
 for flight_num in soup.find_all('div', class_="flight-col flight-col__airline"):
     airline_list.append(flight_num.text.strip('\n\t'))
 
+estimated_hour_list =[]
+for estimated_hour in soup.find_all('div', class_="flight-col flight-col__hour"):
+    estimated_hour_list.append(estimated_hour.text.strip('\n\t'))
 
 detail_list = []
 status_list = []
@@ -58,6 +61,7 @@ for index in range(1,len(destination_list)):
     temp.append(destination_list[index])
     temp.append(airline_list[index])
     temp.append(flight_number_list[index])
+    temp.append(estimated_hour_list[index])
     temp.append(detail_list[index][HOUR_DEPARTURE_INDEX])
     temp.append(detail_list[index][HOUR_ARRIVAL_INDEX])
     temp.append(detail_list[index][TERMINAL_DEPARTURE_INDEX])
