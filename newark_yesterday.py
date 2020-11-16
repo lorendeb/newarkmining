@@ -2,15 +2,13 @@ from bs4 import BeautifulSoup
 import requests
 
 
+
 def newark_list(day='today'):
-    """
-    :param day: yesterday, today of tomorrow
-    :return: list with all chosen day flights
-    """
+
     times = [0, 6, 12, 18]
     final_list = []
     for time in times:
-        URL = 'https://www.airport-ewr.com/newark-departures?tp=' + str(time) + '&day=' + day
+        URL = 'https://www.airport-ewr.com/newark-departures?tp='+str(time)+'&day='+day
 
         # get web data
         page = requests.get(URL)
@@ -33,7 +31,7 @@ def newark_list(day='today'):
         for flight_num in soup.find_all('div', class_="flight-col flight-col__airline"):
             airline_list.append(flight_num.text.strip('\n\t'))
 
-        estimated_hour_list = []
+        estimated_hour_list =[]
         for estimated_hour in soup.find_all('div', class_="flight-col flight-col__hour"):
             estimated_hour_list.append(estimated_hour.text.strip('\n\t'))
 
@@ -41,8 +39,7 @@ def newark_list(day='today'):
         status_list = []
         # for each flight number, get a new url to scrap more data
         for flight_num in flight_number_list:
-            URLdetails = "https://www.airport-ewr.com/newark-flight-departure/" + flight_num.splitlines()[
-                0] + "?day=" + day
+            URLdetails = "https://www.airport-ewr.com/newark-flight-departure/" + flight_num.splitlines()[0] +"?day=" + day
             page = requests.get(URLdetails)
             soup = BeautifulSoup(page.content, "html.parser")
             temp_list = []
@@ -65,7 +62,7 @@ def newark_list(day='today'):
         result_list = []
 
         # create a finale list of lists of details per flight
-        for index in range(1, len(destination_list)):
+        for index in range(1,len(destination_list)):
             temp = []
             temp.append(destination_list[index])
             temp.append(airline_list[index])
