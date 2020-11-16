@@ -2,6 +2,20 @@ from bs4 import BeautifulSoup
 import requests
 
 
+# list of indexes
+DESTINATION_INDEX = 0
+AIRCOMPANY_INDEX = 1
+FLIGHT_NUMBER = 2
+ESTIMATED_HOUR_INDEX= 3
+HOUR_DEPARTURE_INDEX = 4
+HOUR_ARRIVAL_INDEX = 5
+TERMINAL_DEPARTURE_INDEX = 6
+GATE_DEPARTURE_INDEX = 7
+TERMINAL_ARRIVAL_INDEX = 8
+GATE_ARRIVAL_INDEX = 9
+STATUS_INDEX = 10
+
+
 def newark_list(day='today'):
     """
     :param day: yesterday, today of tomorrow
@@ -56,12 +70,12 @@ def newark_list(day='today'):
                 status_list.append('Status')
             detail_list.append(temp_list)
 
-        HOUR_DEPARTURE_INDEX = 0
-        TERMINAL_DEPARTURE_INDEX = 1
-        GATE_DEPARTURE_INDEX = 2
-        HOUR_ARRIVAL_INDEX = 3
-        TERMINAL_ARRIVAL_INDEX = 4
-        GATE_ARRIVAL_INDEX = 5
+        HOUR_DEPARTURE_INDEX_DETAILED = 0
+        TERMINAL_DEPARTURE_INDEX_DETAILED = 1
+        GATE_DEPARTURE_INDEX_DETAILED = 2
+        HOUR_ARRIVAL_INDEX_DETAILED = 3
+        TERMINAL_ARRIVAL_INDEX_DETAILED = 4
+        GATE_ARRIVAL_INDEX_DETAILED = 5
         result_list = []
 
         # create a finale list of lists of details per flight
@@ -71,14 +85,34 @@ def newark_list(day='today'):
             temp.append(airline_list[index])
             temp.append(flight_number_list[index])
             temp.append(estimated_hour_list[index])
-            temp.append(detail_list[index][HOUR_DEPARTURE_INDEX])
-            temp.append(detail_list[index][HOUR_ARRIVAL_INDEX])
-            temp.append(detail_list[index][TERMINAL_DEPARTURE_INDEX])
-            temp.append(detail_list[index][GATE_DEPARTURE_INDEX])
-            temp.append(detail_list[index][TERMINAL_ARRIVAL_INDEX])
-            temp.append(detail_list[index][GATE_ARRIVAL_INDEX])
+            temp.append(detail_list[index][HOUR_DEPARTURE_INDEX_DETAILED])
+            temp.append(detail_list[index][HOUR_ARRIVAL_INDEX_DETAILED])
+            temp.append(detail_list[index][TERMINAL_DEPARTURE_INDEX_DETAILED])
+            temp.append(detail_list[index][GATE_DEPARTURE_INDEX_DETAILED])
+            temp.append(detail_list[index][TERMINAL_ARRIVAL_INDEX_DETAILED])
+            temp.append(detail_list[index][GATE_ARRIVAL_INDEX_DETAILED])
             temp.append(status_list[index])
             result_list.append(temp)
         final_list += result_list
 
     return final_list
+
+
+def get_destination_list(newarklist):
+    """ returns list of day destination"""
+    return [flight[DESTINATION_INDEX] for flight in newarklist]
+
+
+def get_terminal(terminal, newarklist):
+    """ return all terminal departure"""
+    return [flight for flight in newarklist if flight[TERMINAL_DEPARTURE_INDEX].lower().strip(" ") == terminal]
+
+
+def get_time_slot(slot, newarklist):
+    """ returns all flights that leave during the time slot"""
+    return [flight for flight in newarklist if int(flight[ESTIMATED_HOUR_INDEX][:2]) in range(slot, slot+6)]
+
+
+def get_status(status, newarklist):
+    """ return all flight with status status"""
+    return [flight for flight in newarklist if status.lower() in flight[STATUS_INDEX].lower()]
