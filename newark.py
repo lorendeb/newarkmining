@@ -1,30 +1,23 @@
 from bs4 import BeautifulSoup
 import requests
+import config as CFG
 
 
-# list of indexes
-DESTINATION_INDEX = 0
-AIRCOMPANY_INDEX = 1
-FLIGHT_NUMBER = 2
-ESTIMATED_HOUR_INDEX= 3
-HOUR_DEPARTURE_INDEX = 4
-HOUR_ARRIVAL_INDEX = 5
-TERMINAL_DEPARTURE_INDEX = 6
-GATE_DEPARTURE_INDEX = 7
-TERMINAL_ARRIVAL_INDEX = 8
-GATE_ARRIVAL_INDEX = 9
-STATUS_INDEX = 10
-
-
-def newark_list(day='today'):
+def newark_list(to_from, day='today'):
     """
-    :param day: yesterday, today of tomorrow
+    :param
+    to_from: departure flights from Newark or arrival flights to Newark
+    day: yesterday, today of tomorrow
     :return: list with all chosen day flights
     """
-    times = [0, 6, 12, 18]
+    if to_from in CFG.to_from:
+        pass
+    else:
+        raise ValueError('You should select departures or arrivals as input')
+
     final_list = []
-    for time in times:
-        URL = 'https://www.airport-ewr.com/newark-departures?tp=' + str(time) + '&day=' + day
+    for time in CFG.times:
+        URL = 'https://www.airport-ewr.com/newark-'+ to_from+'?tp=' + str(time) + '&day=' + day
 
         # get web data
         page = requests.get(URL)
@@ -55,8 +48,7 @@ def newark_list(day='today'):
         status_list = []
         # for each flight number, get a new url to scrap more data
         for flight_num in flight_number_list:
-            URLdetails = "https://www.airport-ewr.com/newark-flight-departure/" + flight_num.splitlines()[
-                0] + "?day=" + day
+            URLdetails = "https://www.airport-ewr.com/newark-flight-"+to_from+"/" + flight_num.splitlines()[CFG.FIRST_FLIGHT_INDEX] + "?day=" + day
             page = requests.get(URLdetails)
             soup = BeautifulSoup(page.content, "html.parser")
             temp_list = []
@@ -70,12 +62,6 @@ def newark_list(day='today'):
                 status_list.append('Status')
             detail_list.append(temp_list)
 
-        HOUR_DEPARTURE_INDEX_DETAILED = 0
-        TERMINAL_DEPARTURE_INDEX_DETAILED = 1
-        GATE_DEPARTURE_INDEX_DETAILED = 2
-        HOUR_ARRIVAL_INDEX_DETAILED = 3
-        TERMINAL_ARRIVAL_INDEX_DETAILED = 4
-        GATE_ARRIVAL_INDEX_DETAILED = 5
         result_list = []
 
         # create a finale list of lists of details per flight
@@ -85,34 +71,18 @@ def newark_list(day='today'):
             temp.append(airline_list[index])
             temp.append(flight_number_list[index])
             temp.append(estimated_hour_list[index])
-            temp.append(detail_list[index][HOUR_DEPARTURE_INDEX_DETAILED])
-            temp.append(detail_list[index][HOUR_ARRIVAL_INDEX_DETAILED])
-            temp.append(detail_list[index][TERMINAL_DEPARTURE_INDEX_DETAILED])
-            temp.append(detail_list[index][GATE_DEPARTURE_INDEX_DETAILED])
-            temp.append(detail_list[index][TERMINAL_ARRIVAL_INDEX_DETAILED])
-            temp.append(detail_list[index][GATE_ARRIVAL_INDEX_DETAILED])
+            temp.append(detail_list[index][CFG.HOUR_DEPARTURE_INDEX_DETAILED])
+            temp.append(detail_list[index][CFG.HOUR_ARRIVAL_INDEX_DETAILED])
+            temp.append(detail_list[index][CFG.TERMINAL_DEPARTURE_INDEX_DETAILED])
+            temp.append(detail_list[index][CFG.GATE_DEPARTURE_INDEX_DETAILED])
+            temp.append(detail_list[index][CFG.TERMINAL_ARRIVAL_INDEX_DETAILED])
+            temp.append(detail_list[index][CFG.GATE_ARRIVAL_INDEX_DETAILED])
             temp.append(status_list[index])
             result_list.append(temp)
         final_list += result_list
 
     return final_list
 
-
-def get_destination_list(newarklist):
-    """ returns list of day destination"""
-    return [flight[DESTINATION_INDEX] for flight in newarklist]
-
-
-def get_terminal(terminal, newarklist):
-    """ return all terminal departure"""
-    return [flight for flight in newarklist if flight[TERMINAL_DEPARTURE_INDEX].lower().strip(" ") == terminal]
-
-
-def get_time_slot(slot, newarklist):
-    """ returns all flights that leave during the time slot"""
-    return [flight for flight in newarklist if int(flight[ESTIMATED_HOUR_INDEX][:2]) in range(slot, slot+6)]
-
-
-def get_status(status, newarklist):
-    """ return all flight with status status"""
-    return [flight for flight in newarklist if status.lower() in flight[STATUS_INDEX].lower()]
+if __name__ == '__main__':
+    to_from = input('Do you want to parse over incoming flight (type *arrivals*) or leaving flight (type *departures*)')
+    print(newark_list(to_from))
