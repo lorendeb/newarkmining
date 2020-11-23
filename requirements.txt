@@ -1,2 +1,6 @@
-pip install request
-pip install bs4
+beautifulsoup4==4.9.3
+bs4==0.0.1
+requests==2.24.0
+mysql-connector-python==8.0.22
+
+
