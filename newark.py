@@ -46,9 +46,10 @@ def newark_list(to_from, day='today'):
 
         detail_list = []
         status_list = []
+
         # for each flight number, get a new url to scrap more data
         for flight_num in flight_number_list:
-            URLdetails = "https://www.airport-ewr.com/newark-flight-"+to_from+"/" + flight_num.splitlines()[CFG.FIRST_FLIGHT_INDEX] + "?day=" + day
+            URLdetails = "https://www.airport-ewr.com/newark-flight-"+to_from[:CFG.REMOVE_S]+"/" + flight_num.splitlines()[CFG.FIRST_FLIGHT_INDEX] + "?day=" + day
             page = requests.get(URLdetails)
             soup = BeautifulSoup(page.content, "html.parser")
             temp_list = []
@@ -65,7 +66,7 @@ def newark_list(to_from, day='today'):
         result_list = []
 
         # create a finale list of lists of details per flight
-        for index in range(1, len(destination_list)):
+        for index in range(CFG.FIRST_ROW, len(destination_list)):
             temp = []
             temp.append(destination_list[index])
             temp.append(airline_list[index])
@@ -82,6 +83,7 @@ def newark_list(to_from, day='today'):
         final_list += result_list
 
     return final_list
+
 
 if __name__ == '__main__':
     to_from = input('Do you want to parse over incoming flight (type *arrivals*) or leaving flight (type *departures*)')

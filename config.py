@@ -18,7 +18,8 @@ HOUR_ARRIVAL_INDEX_DETAILED = 3
 TERMINAL_ARRIVAL_INDEX_DETAILED = 4
 GATE_ARRIVAL_INDEX_DETAILED = 5
 FIRST_FLIGHT_INDEX = 0
-result_list = []
+FIRST_ROW = 1 # first row no including title
+REMOVE_S = -1 # remove s from departure and arrivals from user input
 
 times = [0, 6, 12, 18]
 
