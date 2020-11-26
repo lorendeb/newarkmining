@@ -18,6 +18,7 @@ STATUS_INDEX = 10
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("arrivals_departures", choices=['arrivals', 'departures'],help="select incoming or leaving flights: arrivals or departures")
     parser.add_argument("day", choices=['today', 'yesterday', 'tomorrow'],help="select date: today, yesterday or tomorrow")
     parser.add_argument('-d', '--destination', action="store_true", help='list of day destination')
     parser.add_argument('-ot', '--ontime', action="store_true", help='list of on time flight')
@@ -26,17 +27,17 @@ def main():
     parser.add_argument('-b12', '--before12', action="store_true", help='list of flight between 6-12pm')
     parser.add_argument('-b18', '--before18', action="store_true", help='list of flight between 12-18pm')
     parser.add_argument('-b0', '--before00', action="store_true", help='list of flight between 18-12am')
-    parser.add_argument('-ta','--terminala', action="store_true", help='list of flight from Terminal A')
-    parser.add_argument('-tb','--terminalb', action="store_true", help='list of flight from Terminal B')
-    parser.add_argument('-tc','--terminalc', action="store_true", help='list of flight from Terminal C')
+    parser.add_argument('-ta','--terminala', action="store_true", help='list of flight from/to Terminal A')
+    parser.add_argument('-tb','--terminalb', action="store_true", help='list of flight from/to Terminal B')
+    parser.add_argument('-tc','--terminalc', action="store_true", help='list of flight from/to Terminal C')
     args = parser.parse_args()
 
-    total_list = newark_df(args.day)
+    df = newark_df(args.arrivals_departures, args.day)
 
     if args.destination:
-        print(get_destination_list(total_list))
+        print(df['City'])
     if args.ontime:
-        print(get_status('on-time',total_list))
+        print(df[df['Status'== ]])
     if args.delayed:
         print(get_status('delayed', total_list))
     if args.before6:
@@ -48,7 +49,7 @@ def main():
     if args.before00:
         print(get_time_slot(18, total_list))
     if args.terminala:
-        print(get_terminal('a', total_list))
+        print(df[df['']])
     if args.terminalb:
         print(get_terminal('b', total_list))
     if args.terminalc:

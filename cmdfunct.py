@@ -1,18 +1,17 @@
 import config as CFG
 
 
-def get_destination_list(newarklist):
-    """ returns list of day destination"""
-    return [flight[CFG.DESTINATION_INDEX] for flight in newarklist]
-
-
-def get_terminal(terminal, newarklist):
+def get_terminal(arr_depar, terminal, df):
     """ return all terminal departure"""
-    return [flight for flight in newarklist if flight[CFG.TERMINAL_DEPARTURE_INDEX].lower().strip(" ") == terminal]
+    if arr_depar == CFG.ARRIVALS:
+        return df[df['Arrival_Terminal'].str.strip(" ") == terminal]
+    else:
+        return df[df['Departure_Terminal'].str.strip(" ") == terminal]
 
 
-def get_time_slot(slot, newarklist):
+def get_time_slot(slot, df):
     """ returns all flights that leave during the time slot"""
+    df[df['Estimated_hour'].str[:2]]
     return [flight for flight in newarklist if int(flight[CFG.ESTIMATED_HOUR_INDEX][:2]) in range(slot, slot+6)]
 
 

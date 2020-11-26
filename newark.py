@@ -135,8 +135,8 @@ def newark_df(arr_depart, day='today'):
     flight_list = [flight.split('\n')[0] for flight in newark_df_col['Flight_number']]
     newark_df_row = get_df_row_g(arr_depart,day, flight_list)
 
-    newark_df_row['Departure_Hour'] = pd.to_datetime(newark_df_row['Departure_Hour'], format='%H:%M').dt.time
-    newark_df_row['Arrival_Hour'] = pd.to_datetime(newark_df_row['Arrival_Hour'], format='%H:%M').dt.time
+    newark_df_row['Departure_Hour'] = pd.to_datetime(newark_df_row['Departure_Hour'].str.strip(" "), format='%H:%M').dt.time
+    newark_df_row['Arrival_Hour'] = pd.to_datetime(newark_df_row['Arrival_Hour'].str.strip(" "), format='%H:%M').dt.time
 
     if newark_df_col.shape[0] == newark_df_row.shape[0]:
         newark_df = pd.concat([newark_df_col,newark_df_row], axis=1)
