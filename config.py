@@ -21,6 +21,15 @@ FIRST_FLIGHT_INDEX = 0
 FIRST_ROW = 1 # first row no including title
 REMOVE_S = -1 # remove s from departure and arrivals from user input
 
-times = [0, 6, 12, 18]
+TIMES = [0, 6, 12, 18]
 
-to_from = ["departures", "arrivals"]
+ARR_DEPART = ["departures", "arrivals"]
+
+RESPONSE = 200
+
+ARRIVAL_URL = 'https://www.airport-ewr.com/newark-arrivals?tp='
+DEPARTURE_URL = 'https://www.airport-ewr.com/newark-departures?tp='
+ARRIVAL_FLIGHT_URL = "https://www.airport-ewr.com/newark-flight-arrival/"
+DEPARTURE_FLIGHT_URL = "https://www.airport-ewr.com/newark-flight-departure/"
+ARRIVALS = 'arrivals'
+DEPARTURES = 'departures'
