@@ -4,6 +4,9 @@ import requests
 import config as CFG
 import logging
 import pandas as pd
+from datetime import date
+from datetime import timedelta
+
 
 
 # logging configuration- from Info level
@@ -52,13 +55,13 @@ def get_status(soup):
 
 def get_df_column(soup):
     destination_list = get_list(soup, class_="flight-col flight-col__dest-term")
-    city_list = [destination.split('\n')[0] for destination in destination_list]
-    city_sn_list = [destination.split('\n')[1] for destination in destination_list]
+    # city_list = [destination.split('\n')[0] for destination in destination_list]
+    # city_sn_list = [destination.split('\n')[1] for destination in destination_list]
     flight_number_list = get_list(soup, class_="flight-col flight-col__flight")
     airline_list = get_list(soup, class_="flight-col flight-col__airline")
     estimated_hour_list = get_list(soup, class_="flight-col flight-col__hour")
     flight_dictionary = {'City': destination_list,
-                         'City_Shortname': city_sn_list,
+                         # 'City_Shortname': city_sn_list,
                          'Flight_number': flight_number_list,
                          'Airline': airline_list,
                          'Estimated_hour': estimated_hour_list}
@@ -141,6 +144,20 @@ def newark_df(arr_depart, day='today'):
         newark_df['Arrival_Departure'] = 'departure'
     else:
         newark_df['Arrival_Departure'] = 'arrival'
+
+    if day == 'today':
+        today = date.today()
+        today.strftime('%d%m%y')
+        newark_df['date'] == today
+    elif day == 'yesterday':
+        yesterday = date.today() - timedelta(days=1)
+        yesterday.strftime('%d%m%y')
+        newark_df['date'] == yesterday
+    else:
+        tomorrow = date.today() + timedelta(days=1)
+        tomorrow.strftime('%d%m%y')
+        newark_df['date'] == tomorrow
+
     return newark_df
 
 

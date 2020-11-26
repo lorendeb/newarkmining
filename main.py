@@ -31,7 +31,7 @@ def main():
     parser.add_argument('-tc','--terminalc', action="store_true", help='list of flight from Terminal C')
     args = parser.parse_args()
 
-    total_list = newark_list(args.day)
+    total_list = newark_df(args.day)
 
     if args.destination:
         print(get_destination_list(total_list))
