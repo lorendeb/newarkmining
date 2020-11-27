@@ -24,6 +24,7 @@ REMOVE_S = -1 # remove s from departure and arrivals from user input
 TIMES = [0, 6, 12, 18]
 
 ARR_DEPART = ["departures", "arrivals"]
+DAYS = ['today','yesterday','tomorrow']
 
 RESPONSE = 200
 

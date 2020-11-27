@@ -11,10 +11,16 @@ def get_terminal(arr_depar, terminal, df):
 
 def get_time_slot(slot, df):
     """ returns all flights that leave during the time slot"""
-    df[df['Estimated_hour'].str[:2]]
-    return [flight for flight in newarklist if int(flight[CFG.ESTIMATED_HOUR_INDEX][:2]) in range(slot, slot+6)]
+    if slot == 0:
+        return df[(df['Estimated_hour'].str.strip(" ") >= '00:00') & (df['Estimated_hour'].str.strip(" ") < '06:00')]
+    elif slot == 6:
+        return df[(df['Estimated_hour'].str.strip(" ") >= '06:00') & (df['Estimated_hour'].str.strip(" ") < '12:00')]
+    elif slot == 12:
+        return df[(df['Estimated_hour'].str.strip(" ") >= '12:00') & (df['Estimated_hour'].str.strip(" ") < '18:00')]
+    else:
+        return df[(df['Estimated_hour'].str.strip(" ") >= '18:00') & (df['Estimated_hour'].str.strip(" ") < '00:00')]
 
-
-def get_status(status, newarklist):
+def get_status_(status, df):
     """ return all flight with status status"""
-    return [flight for flight in newarklist if status.lower() in flight[CFG.STATUS_INDEX].lower()]
+    return df[df['Status'].str.contains(status)]
+
