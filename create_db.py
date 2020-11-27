@@ -7,22 +7,7 @@ from newark import *
 DB_NAME = 'newark'
 
 TABLES = {}
-TABLES['arrivals'] = ('''CREATE TABLE arrivals 
-                        (flight_id INT PRIMARY KEY AUTO_INCREMENT,
-                        City VARCHAR(255),
-                        Flight_number VARCHAR(255),
-                        Airline VARCHAR(255),
-                        Estimated_hour VARCHAR(255),
-                        Departure_Hour VARCHAR(255),
-                        Departure_Terminal VARCHAR(255),
-                        Departure_Gate VARCHAR(255),
-                        Arrival_Hour VARCHAR(255),
-                        Arrival_Terminal VARCHAR(255),
-                        Arrival_Gate VARCHAR(255),
-                        Status VARCHAR(255),
-                        Arrival_Departure VARCHAR(255))''')
-
-TABLES['departures'] = ('''CREATE TABLE departures 
+TABLES['all_flights'] = ('''CREATE TABLE all_flights 
                         (flight_id INT PRIMARY KEY AUTO_INCREMENT,
                         City VARCHAR(255),
                         Flight_number VARCHAR(255),
@@ -94,16 +79,19 @@ def insert_to_table(table,df):
     mydb.commit()
 
 if __name__ == '__main__':
-    to_from = input('Do you want to scrap over incoming flight (type *arrivals*) or leaving flight (type *departures*)')
-    if to_from == 'arrivals':
-        arrivals_df = newark_df(to_from)
-    elif to_from == 'departures':
-        departures_df = newark_df(to_form)
-    flights_df = flight_num_df(newark_df(to_from))
-    city_df = cities_df(newark_df(to_from))
+    arrivals_df_tod = newark_df('arrivals','today')
+    arrivals_df_tom = newark_df('arrivals', 'tomorrow')
+    arrivals_df_yes = newark_df('arrivals', 'yesterday')
+    departures_df_tod = newark_df('departures','today')
+    departures_df_tom = newark_df('departures', 'tomorrow')
+    departures_df_yes = newark_df('departures', 'yesterday')
 
-    insert_to_table('arrivals',arrivals_df)
-    insert_to_table('departures', departures_df)
+    all_flights_df = pd.concat([arrivals_df_tod,arrivals_df_tom,arrivals_df_yes,departures_df_tod,departures_df_tom,departures_df_yes])
+    all_flights_df.drop_duplicates(inplace = True)
+    flights_df = flight_num_df(all_flights_df)
+    city_df = cities_df(all_flights_df)
+
+    insert_to_table('all_flights',all_flights_df)
     insert_to_table('flights', flights_df)
     insert_to_table('city', city_df)
 
