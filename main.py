@@ -1,4 +1,4 @@
-from newark import *
+from new import *
 from cmdfunct import *
 import argparse
 
@@ -44,58 +44,53 @@ def main():
 
     if args.ontime:
         ontime = get_status_('On-time', df)
+        # print(ontime['City'])
         print("The flights on time are: {}".format(
-                " and ".join([", ".join(ontime[:len(ontime)-1]), ontime[len(ontime)-1]])))
+                " and ".join([", ".join(ontime['City'][:len(ontime['City'])-1]),ontime['City'][ontime(df['City'])-1]])))
 
     if args.delayed:
         delayed = get_status_('Delayed', df)
+        # print(delayed["City"])
         print("The flights delayed are: {}".format(
-            " and ".join([", ".join(delayed[:len(delayed) - 1]), delayed[len(delayed) - 1]])))
+                ", ".join(delayed['City'])))
+
 
     if args.from0:
         slot = get_time_slot(0, df)
         print("The following flights will/have {} Newark from midnight to 6am {}:{}".format(
-            verb, args.arrivals_departures, " and ".join([", ".join(slot[:len(slot) - 1]), slot[len(slot) - 1]])
-        ))
+             verb, args.arrivals_departures, ", ".join(slot['City'])))
 
     if args.from6:
         slot = get_time_slot(6, df)
         print("The following flights will/have {} Newark from 6am to 12pm {}:{}".format(
-            verb, args.arrivals_departures, " and ".join([", ".join(slot[:len(slot) - 1]), slot[len(slot) - 1]])
-        ))
+            verb, args.arrivals_departures, ", ".join(slot['City'])))
 
     if args.from12:
         slot = get_time_slot(12, df)
         print("The following flights will/have {} Newark from 12pm to 6pm {}:{}".format(
-            verb, args.arrivals_departures, " and ".join([", ".join(slot[:len(slot) - 1]), slot[len(slot) - 1]])
-        ))
+            verb, args.arrivals_departures, ", ".join(slot['City'])))
 
     if args.from18:
         slot = get_time_slot(18, df)
         print("The following flights {} Newark from 6pm to 12am {}:{}".format(
-            verb, args.arrivals_departures, " and ".join([", ".join(slot[:len(slot) - 1]), slot[len(slot) - 1]])
-        ))
+            verb, args.arrivals_departures, ", ".join(slot['City'])))
 
     if args.terminala:
         terminal = get_terminal(args.arrivals_departures, "A", df)
         print("These flights {} Newark {} at terminal A:".format(
-            verb, args.arrivals_departures,
-            " and ".join([", ".join(terminal[:len(terminal) - 1]), terminal[len(terminal) - 1]])
-        ))
+            verb, args.arrivals_departures, ", ".join(terminal['City'])))
 
     if args.terminalb:
         terminal = get_terminal(args.arrivals_departures, "B", df)
         print("These flights {} Newark {} at terminal B:".format(
             verb, args.arrivals_departures,
-            " and ".join([", ".join(terminal[:len(terminal) - 1]), terminal[len(terminal) - 1]])
-        ))
+            ", ".join(terminal['City'])))
 
     if args.terminalc:
         terminal = get_terminal(args.arrivals_departures, "C", df)
         print("These flights {} Newark {} at terminal C:".format(
             verb, args.arrivals_departures,
-            " and ".join([", ".join(terminal[:len(terminal) - 1]), terminal[len(terminal) - 1]])
-        ))
+            ", ".join(terminal['City'])))
 
 
 if __name__ == '__main__':
