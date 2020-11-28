@@ -190,7 +190,7 @@ def newark_df(arr_depart, day='today'):
             date_ = date.today()
         elif day == 'yesterday':
             date_ = date.today() - timedelta(days=1)
-        else:
+        elif day == 'tomorrow':
             date_ = date.today() + timedelta(days=1)
         date_.strftime("%m/%d/%Y, %H:%M:%S")
     else:
@@ -230,6 +230,10 @@ def newark_df(arr_depart, day='today'):
 if __name__ == '__main__':
     to_from = input('Do you want to scrap over incoming flight (type *arrivals*) or leaving flight (type *departures*)')
     try:
-        print(newark_df(to_from))
+        df = newark_df(to_from)
+        #df.to_csv('check.csv')
+        print(df)
+
+
     except Exception as ex:
         print(ex)

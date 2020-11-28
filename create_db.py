@@ -3,6 +3,7 @@ import mysql.connector
 from mysql.connector import errorcode
 import pandas as pd
 from newark import *
+from small_df import *
 
 DB_NAME = 'newark'
 
@@ -13,6 +14,7 @@ TABLES['all_flights'] = ('''CREATE TABLE all_flights
                         Flight_number VARCHAR(255),
                         Airline VARCHAR(255),
                         Estimated_hour VARCHAR(255),
+                        City_Shortname VARCHAR(255),
                         Departure_Hour VARCHAR(255),
                         Departure_Terminal VARCHAR(255),
                         Departure_Gate VARCHAR(255),
@@ -20,12 +22,13 @@ TABLES['all_flights'] = ('''CREATE TABLE all_flights
                         Arrival_Terminal VARCHAR(255),
                         Arrival_Gate VARCHAR(255),
                         Status VARCHAR(255),
-                        Arrival_Departure VARCHAR(255))''')
+                        Arrival_Departure VARCHAR(255),
+                        date VARCHAR(255))''')
 
 TABLES['flights'] = ('''CREATE TABLE flights
-                        (ind INT PRIMARY KEY AUTO_INCREMENT, 
-                        flight_index INT,
-                        flight_number VARCHAR(255))''')
+                        (orig_ind INT PRIMARY KEY, 
+                        flight_ind INT,
+                        flight_num VARCHAR(255))''')
 
 TABLES['city'] = ('''CREATE TABLE city 
                         (destination_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -83,10 +86,10 @@ if __name__ == '__main__':
     arrivals_df_tom = newark_df('arrivals', 'tomorrow')
     arrivals_df_yes = newark_df('arrivals', 'yesterday')
     departures_df_tod = newark_df('departures','today')
-    departures_df_tom = newark_df('departures', 'tomorrow')
+    #departures_df_tom = newark_df('departures', 'tomorrow')
     departures_df_yes = newark_df('departures', 'yesterday')
 
-    all_flights_df = pd.concat([arrivals_df_tod,arrivals_df_tom,arrivals_df_yes,departures_df_tod,departures_df_tom,departures_df_yes])
+    all_flights_df = pd.concat([arrivals_df_tod,arrivals_df_tom,arrivals_df_yes,departures_df_tod,departures_df_yes])
     all_flights_df.drop_duplicates(inplace = True)
     flights_df = flight_num_df(all_flights_df)
     city_df = cities_df(all_flights_df)
