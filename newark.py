@@ -146,7 +146,7 @@ def get_df_row_g(arr_depar, day, flight_num_list):
         if not resp:
             logging.error(f'Invalid website, request response: {resp}')
             return
-        logging.debug(f'Website for director info successfully scrapped')
+        logging.debug(f'Website for flight pages successfully scrapped')
         for r in resp:
             sp = BeautifulSoup(r.content, "html.parser")
             temp = get_list(sp, class_="flight-info__infobox-text")
