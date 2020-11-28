@@ -3,19 +3,6 @@ from cmdfunct import *
 import argparse
 
 
-DESTINATION_INDEX = 0
-AIRCOMPANY_INDEX = 1
-FLIGHT_NUMBER = 2
-ESTIMATED_HOUR_INDEX= 3
-HOUR_DEPARTURE_INDEX = 4
-HOUR_ARRIVAL_INDEX = 5
-TERMINAL_DEPARTURE_INDEX = 6
-GATE_DEPARTURE_INDEX = 7
-TERMINAL_ARRIVAL_INDEX = 8
-GATE_ARRIVAL_INDEX = 9
-STATUS_INDEX = 10
-
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("arrivals_departures", choices=['arrivals', 'departures'],help="select incoming or leaving flights: arrivals or departures")
@@ -56,38 +43,38 @@ def main():
 
 
     if args.from0:
-        slot = get_time_slot(0, df)
+        slot = get_time_slot(CFG.FIRST_SECTION, df)
         print("The following flights will/have {} Newark from midnight to 6am {}:{}".format(
              verb, args.arrivals_departures, ", ".join(slot['City'])))
 
     if args.from6:
-        slot = get_time_slot(6, df)
+        slot = get_time_slot(CFG.SECOND_SECTION, df)
         print("The following flights will/have {} Newark from 6am to 12pm {}:{}".format(
             verb, args.arrivals_departures, ", ".join(slot['City'])))
 
     if args.from12:
-        slot = get_time_slot(12, df)
+        slot = get_time_slot(CFG.THIRD_SECTION, df)
         print("The following flights will/have {} Newark from 12pm to 6pm {}:{}".format(
             verb, args.arrivals_departures, ", ".join(slot['City'])))
 
     if args.from18:
-        slot = get_time_slot(18, df)
+        slot = get_time_slot(CFG.FOURTH_SECTION, df)
         print("The following flights {} Newark from 6pm to 12am {}:{}".format(
             verb, args.arrivals_departures, ", ".join(slot['City'])))
 
     if args.terminala:
-        terminal = get_terminal(args.arrivals_departures, "A", df)
+        terminal = get_terminal(args.arrivals_departures, CFG.A, df)
         print("These flights {} Newark {} at terminal A:".format(
             verb, args.arrivals_departures, ", ".join(terminal['City'])))
 
     if args.terminalb:
-        terminal = get_terminal(args.arrivals_departures, "B", df)
+        terminal = get_terminal(args.arrivals_departures, CFG.B, df)
         print("These flights {} Newark {} at terminal B:".format(
             verb, args.arrivals_departures,
             ", ".join(terminal['City'])))
 
     if args.terminalc:
-        terminal = get_terminal(args.arrivals_departures, "C", df)
+        terminal = get_terminal(args.arrivals_departures, CFG.C, df)
         print("These flights {} Newark {} at terminal C:".format(
             verb, args.arrivals_departures,
             ", ".join(terminal['City'])))

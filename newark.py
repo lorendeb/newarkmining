@@ -21,7 +21,7 @@ def get_list(soup, class_):
     :param class_
     :return: list
     """
-    feature_list = [feature.text.strip('\n\t') for feature in soup.find_all('div', class_)]
+    feature_list = [feature.text.strip(CFG.TAB_LINE) for feature in soup.find_all('div', class_)]
     return feature_list
 
 
@@ -35,7 +35,7 @@ def get_soup(URL):
     resp = page.status_code
     if resp != CFG.RESPONSE:
         logging.error(f'Invalid website, request response: {resp}')
-        return
+        raise ValueError('Site does not respond. Impossible to scrap')
     logging.info(f'Website successfully scrapped')
     soup = BeautifulSoup(page.content, "html.parser")
     return soup
@@ -78,7 +78,7 @@ def get_status(soup):
     """
     status = soup.find('div', class_="flight-status__title")
     if status:
-        return status.text.strip('\n\t')
+        return status.text.strip(CFG.TAB_LINE)
     else:
         return ""
 
@@ -90,10 +90,11 @@ def get_df_column(soup):
     :return: dataframe with details of the flight from the main website.
     """
     destination_list = get_list(soup, class_="flight-col flight-col__dest-term")
-    city_list = [destination.split('\n')[0] for destination in destination_list]
-    city_sn_list = [destination.split('\n')[-1].replace('(','').replace(')','') for destination in destination_list]
+    city_list = [destination.split(CFG.NEW_LINE)[CFG.CITY_NAME] for destination in destination_list]
+    city_sn_list = [destination.split(CFG.NEW_LINE)[CFG.CITY_SHORTNAME].replace('(','').replace(')','')
+                    for destination in destination_list]
     flight_number_list = get_list(soup, class_="flight-col flight-col__flight")
-    flight_number_list = [", ".join(flight_num.split('\n')) for flight_num in flight_number_list]
+    flight_number_list = [", ".join(flight_num.split(CFG.NEW_LINE)) for flight_num in flight_number_list]
     airline_list = get_list(soup, class_="flight-col flight-col__airline")
     estimated_hour_list = get_list(soup, class_="flight-col flight-col__hour")
     flight_dictionary = {'City': city_list,
@@ -102,7 +103,7 @@ def get_df_column(soup):
                          'Airline': airline_list,
                          'Estimated_hour': estimated_hour_list}
     df = pd.DataFrame(flight_dictionary)
-    df.drop(df.index[0], inplace=True)
+    df.drop(df.index[CFG.FIRST_ROW], inplace=True)
     return df
 
 
@@ -120,7 +121,7 @@ def get_df_row(arr_depar, day, flight_num_list):
     for url in url_list:
         sp = get_soup(url)
         temp = get_list(sp, class_="flight-info__infobox-text")
-        temp.append(get_list(sp))
+        temp.append(get_status(sp))
         final_list.append(temp)
     df = pd.DataFrame(final_list, columns=['Departure_Hour', 'Departure_Terminal', 'Departure_Gate',
                                         'Arrival_Hour', 'Arrival_Terminal', 'Arrival_Gate', 'Status'])
@@ -138,9 +139,9 @@ def get_df_row_g(arr_depar, day, flight_num_list):
     # create list of urls for each flight number
     url_list = [get_url_flight(arr_depar, flight_num, day) for flight_num in flight_num_list]
     final_list = []
-    loop_end = len(url_list)//10
-    for index in range(0, loop_end*10, 10):
-        reqs = (grequests.get(u) for u in url_list[index:index + 10])
+    loop_end = len(url_list)//CFG.GROUPING
+    for index in range(CFG.START_URL, loop_end*CFG.GROUPING, CFG.GROUPING):
+        reqs = (grequests.get(u) for u in url_list[index:index + CFG.GROUPING])
         resp = grequests.map(reqs)
         if not resp:
             logging.error(f'Invalid website, request response: {resp}')
@@ -153,7 +154,7 @@ def get_df_row_g(arr_depar, day, flight_num_list):
             #append to a list of each flight number details list
             final_list.append(temp)
     # for the last urls that are not a multiple of 10
-    req = (grequests.get(u) for u in url_list[loop_end*10:len(url_list)])
+    req = (grequests.get(u) for u in url_list[loop_end*CFG.GROUPING:len(url_list)])
     res = grequests.map(req)
     if not res:
         logging.error(f'Invalid website, request response: {res}')
@@ -170,7 +171,7 @@ def get_df_row_g(arr_depar, day, flight_num_list):
     return df
 
 
-def newark_df(arr_depart, day='today'):
+def newark_df(arr_depart, day=CFG.TODAY):
     """
     build dataframe with all details of flights, arrivals or depatures, of the day
     :param
@@ -186,13 +187,13 @@ def newark_df(arr_depart, day='today'):
 
     # check inputs are correct and create datetime
     if day in CFG.DAYS:
-        if day == 'today':
+        if day == CFG.TODAY:
             date_ = date.today()
-        elif day == 'yesterday':
-            date_ = date.today() - timedelta(days=1)
-        elif day == 'tomorrow':
-            date_ = date.today() + timedelta(days=1)
-        date_.strftime("%m/%d/%Y, %H:%M:%S")
+        elif day == CFG.YESTERDAY:
+            date_ = date.today() - timedelta(days=CFG.YESTERDAY_DELTA)
+        else:
+            date_ = date.today() + timedelta(days=CFG.TOMORROW_DELTA)
+        date_.strftime(CFG.DATE_FORMAT)
     else:
         raise ValueError('You should select today,yesterday or tomorrow as input')
 
@@ -204,21 +205,22 @@ def newark_df(arr_depart, day='today'):
 
     # from new_df_col, get list of flight number to build the url for scrapping each flight number page
     # some flights are multiple flight numbers, getting the first one (same data on all pages)
-    flight_list = [flight.split('\n')[0] for flight in newark_df_col['Flight_number']]
+    flight_list = [flight.split(CFG.NEW_LINE)[CFG.FIRST_FLIGHT] for flight in
+                   newark_df_col['Flight_number']]
     # create dataframe from the flight numbers pages
     newark_df_row = get_df_row_g(arr_depart,day, flight_list)
 
     # check the two dataframe have the same number of lines, and concatenate them side by side
-    if newark_df_col.shape[0] == newark_df_row.shape[0]:
+    if newark_df_col.shape[CFG.ROWS] == newark_df_row.shape[CFG.ROWS]:
         newark_df = pd.concat([newark_df_col,newark_df_row], axis=1)
     else:
         raise IndexError('Missing data')
 
     # add column with departure or arrival, to know which kind of flight it is
-    if arr_depart == 'departures':
-        newark_df['Arrival_Departure'] = 'departure'
+    if arr_depart == CFG.DEPARTURES:
+        newark_df['Arrival_Departure'] = CFG.DEPARTURE
     else:
-        newark_df['Arrival_Departure'] = 'arrival'
+        newark_df['Arrival_Departure'] = CFG.ARRIVAL
 
     # add column with date and time
     # a flight can appear multiple time in the dataframe, but the status and hour can be updated
@@ -231,9 +233,6 @@ if __name__ == '__main__':
     to_from = input('Do you want to scrap over incoming flight (type *arrivals*) or leaving flight (type *departures*)')
     try:
         df = newark_df(to_from)
-        #df.to_csv('check.csv')
         print(df)
-
-
     except Exception as ex:
         print(ex)
