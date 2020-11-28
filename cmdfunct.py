@@ -5,9 +5,9 @@ def get_terminal(arr_depar, terminal, df):
     """ return all terminal departure"""
     df.dropna(inplace=True)
     if arr_depar == CFG.ARRIVALS:
-        return df[df['Arrival_Terminal'].str.contains(terminal)]
+        return df[df['Arrival_Terminal'] == terminal]
     else:
-        return df[df['Departure_Terminal'].str.contains(terminal)]
+        return df[df['Departure_Terminal'] == terminal]
 
 
 def get_time_slot(slot, df):

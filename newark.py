@@ -21,7 +21,7 @@ def get_list(soup, class_):
     :param class_
     :return: list
     """
-    feature_list = [feature.text.strip(CFG.TAB_LINE) for feature in soup.find_all('div', class_)]
+    feature_list = [feature.text.strip('\n\t') for feature in soup.find_all('div', class_)]
     return feature_list
 
 
@@ -78,7 +78,7 @@ def get_status(soup):
     """
     status = soup.find('div', class_="flight-status__title")
     if status:
-        return status.text.strip(CFG.TAB_LINE)
+        return status.text.strip('\n\t')
     else:
         return ""
 
@@ -124,7 +124,7 @@ def get_df_row(arr_depar, day, flight_num_list):
         temp.append(get_status(sp))
         final_list.append(temp)
     df = pd.DataFrame(final_list, columns=['Departure_Hour', 'Departure_Terminal', 'Departure_Gate',
-                                        'Arrival_Hour', 'Arrival_Terminal', 'Arrival_Gate', 'Status'])
+                                           'Arrival_Hour', 'Arrival_Terminal', 'Arrival_Gate', 'Status'])
     return df
 
 
@@ -211,6 +211,7 @@ def newark_df(arr_depart, day=CFG.TODAY):
     newark_df_row = get_df_row_g(arr_depart,day, flight_list)
 
     # check the two dataframe have the same number of lines, and concatenate them side by side
+    print(type(newark_df_row))
     if newark_df_col.shape[CFG.ROWS] == newark_df_row.shape[CFG.ROWS]:
         newark_df = pd.concat([newark_df_col,newark_df_row], axis=1)
     else:
@@ -232,7 +233,7 @@ def newark_df(arr_depart, day=CFG.TODAY):
 if __name__ == '__main__':
     to_from = input('Do you want to scrap over incoming flight (type *arrivals*) or leaving flight (type *departures*)')
     try:
-        df = newark_df(to_from)
+        df = newark_df(to_from, 'tomorrow')
         print(df)
     except Exception as ex:
         print(ex)

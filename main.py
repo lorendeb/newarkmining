@@ -4,12 +4,13 @@ import argparse
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description='Scrapping Newark website!')
     parser.add_argument("arrivals_departures", choices=['arrivals', 'departures'],help="select incoming or leaving flights: arrivals or departures")
     parser.add_argument("day", choices=['today', 'yesterday', 'tomorrow'],help="select date: today, yesterday or tomorrow")
     parser.add_argument('-d', '--destination', action="store_true", help='list of day destination')
     parser.add_argument('-ot', '--ontime', action="store_true", help='list of on time flight')
     parser.add_argument('-dl', '--delayed', action="store_true", help='list of delayed flight')
+    parser.add_argument('-c', '--canceled', action="store_true", help='list of delayed flight')
     parser.add_argument('-f0', '--from0', action="store_true", help='list of flight between 00-6am')
     parser.add_argument('-f6', '--from6', action="store_true", help='list of flight between 6-12pm')
     parser.add_argument('-f12', '--from12', action="store_true", help='list of flight between 12-18pm')
@@ -31,16 +32,18 @@ def main():
 
     if args.ontime:
         ontime = get_status_('On-time', df)
-        # print(ontime['City'])
         print("The flights on time are: {}".format(
                 " and ".join([", ".join(ontime['City'][:len(ontime['City'])-1]),ontime['City'][ontime(df['City'])-1]])))
 
     if args.delayed:
         delayed = get_status_('Delayed', df)
-        # print(delayed["City"])
         print("The flights delayed are: {}".format(
                 ", ".join(delayed['City'])))
 
+    if args.canceled:
+        delayed = get_status_('Canceled', df)
+        print("The flights canceled are: {}".format(
+                ", ".join(delayed['City'])))
 
     if args.from0:
         slot = get_time_slot(CFG.FIRST_SECTION, df)

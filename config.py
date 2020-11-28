@@ -1,12 +1,12 @@
 # scrapping
 RESPONSE = 200
-TAB_LINE = '\n\t'
+
 # cleaning the data from scrapping
 NEW_LINE = '\n'
 CITY_NAME = 0
 CITY_SHORTNAME = -1
 FIRST_FLIGHT = 0
-FIRST_ROW = 0 # first row no including title
+FIRST_ROW = 0
 
 # grequest grouping size
 GROUPING = 10
