@@ -48,3 +48,34 @@ PRESENT_L = 'leave'
 PRESENT_A = 'arrive'
 TO = 'to'
 FROM = 'from'
+
+#database
+DB_NAME = 'newark'
+TABLES = {}
+TABLES['all_flights'] = ('''CREATE TABLE all_flights 
+                        (flight_id INT PRIMARY KEY AUTO_INCREMENT,
+                        City VARCHAR(255),
+                        Flight_number VARCHAR(255),
+                        Airline VARCHAR(255),
+                        Estimated_hour VARCHAR(255),
+                        Departure_Hour VARCHAR(255),
+                        Departure_Terminal VARCHAR(255),
+                        Departure_Gate VARCHAR(255),
+                        Arrival_Hour VARCHAR(255),
+                        Arrival_Terminal VARCHAR(255),
+                        Arrival_Gate VARCHAR(255),
+                        Status VARCHAR(255),
+                        Arrival_Departure VARCHAR(255),
+                        date VARCHAR(255))''')
+
+TABLES['flights'] = ('''CREATE TABLE flights
+                        (orig_ind INT PRIMARY KEY, 
+                        flight_id INT,
+                        flight_number VARCHAR(255))''')
+
+
+TABLES['city'] = ('''CREATE TABLE city 
+                        (city_id INT PRIMARY KEY AUTO_INCREMENT,
+                        City VARCHAR(255),
+                        City_Shortname VARCHAR(255))''')
+
