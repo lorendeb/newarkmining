@@ -14,12 +14,17 @@ This progrem scrapes data about departures and arrivals flights with the followi
 - Actual arrival time
 - Flight status
 
-Data can be of flights of today, yesterday or tomorrow in 4 times ranges: 0-6, 6-12, 12- 18, 18-0. 
+Data can be of flights of today, yesterday or tomorrow, departures or arrivals.
 
 ### How to use:
-Choose the day (today, yesterday tomorrow) and what information you want to get: arrivals or departures. 
-If you wish, you can also specify other parameters for filtering:
-destination, time, time range, terminal etc. 
+
+Select incoming or leaving flight (departures/arrivals), then a day 
+(today, yesterday tomorrow). You will get a list with corresponding flights, and 
+relevant data about.
+If you want to filter, you can specify the destination/origin (-d), the terminal
+at Newark (-t), the status of the flights (-s), the airline company (-a) or flight 
+number (-fn).
+
 From the command line call main.py, see help for more commands.
 
 ### Requierments:
@@ -33,7 +38,7 @@ From the command line call main.py, see help for more commands.
 | requests | 2.24.0 |
 | logging |  |
 | pandas as pd | 1.0.5 |
-| from datetime import date |  |
+| from datetime import datetime |  |
 | from datetime import timedelta |  |
 | argparse | 1.4.0 |
 

@@ -202,6 +202,7 @@ def newark_df(arr_depart, day=CFG.TODAY):
     for url in get_url(arr_depart, day):
         temp = get_df_column(get_soup(url))
         newark_df_col = pd.concat([newark_df_col,temp], ignore_index=True)
+    logging.info(f'Main website successfully converted to dataframe.')
 
     # from new_df_col, get list of flight number to build the url for scrapping each flight number page
     # some flights are multiple flight numbers, getting the first one (same data on all pages)
@@ -209,9 +210,9 @@ def newark_df(arr_depart, day=CFG.TODAY):
                    newark_df_col['Flight_number']]
     # create dataframe from the flight numbers pages
     newark_df_row = get_df_row_g(arr_depart,day, flight_list)
+    logging.info(f'Flight pages successfully converted to dataframe.')
 
     # check the two dataframe have the same number of lines, and concatenate them side by side
-    print(type(newark_df_row))
     if newark_df_col.shape[CFG.ROWS] == newark_df_row.shape[CFG.ROWS]:
         newark_df = pd.concat([newark_df_col,newark_df_row], axis=1)
     else:
@@ -233,7 +234,7 @@ def newark_df(arr_depart, day=CFG.TODAY):
 if __name__ == '__main__':
     to_from = input('Do you want to scrap over incoming flight (type *arrivals*) or leaving flight (type *departures*)')
     try:
-        df = newark_df(to_from, 'tomorrow')
+        df = newark_df(to_from)
         print(df)
     except Exception as ex:
         print(ex)
