@@ -1,86 +1,81 @@
-from new import *
-from cmdfunct import *
+from newark import *
 import argparse
 
 
 def main():
     parser = argparse.ArgumentParser(description='Scrapping Newark website!')
-    parser.add_argument("arrivals_departures", choices=['arrivals', 'departures'],help="select incoming or leaving flights: arrivals or departures")
-    parser.add_argument("day", choices=['today', 'yesterday', 'tomorrow'],help="select date: today, yesterday or tomorrow")
-    parser.add_argument('-d', '--destination', action="store_true", help='list of day destination')
-    parser.add_argument('-ot', '--ontime', action="store_true", help='list of on time flight')
-    parser.add_argument('-dl', '--delayed', action="store_true", help='list of delayed flight')
-    parser.add_argument('-c', '--canceled', action="store_true", help='list of delayed flight')
-    parser.add_argument('-f0', '--from0', action="store_true", help='list of flight between 00-6am')
-    parser.add_argument('-f6', '--from6', action="store_true", help='list of flight between 6-12pm')
-    parser.add_argument('-f12', '--from12', action="store_true", help='list of flight between 12-18pm')
-    parser.add_argument('-f18', '--from18', action="store_true", help='list of flight between 18-12am')
-    parser.add_argument('-ta','--terminala', action="store_true", help='list of flight from/to Terminal A')
-    parser.add_argument('-tb','--terminalb', action="store_true", help='list of flight from/to Terminal B')
-    parser.add_argument('-tc','--terminalc', action="store_true", help='list of flight from/to Terminal C')
+    parser.add_argument("arrivals_departures", choices=['arrivals', 'departures'],
+                        help="select incoming or leaving flights: arrivals or departures")
+    parser.add_argument('day', choices=['today', 'yesterday', 'tomorrow'],
+                        help="select day: today, yesterday or tomorrow")
+    parser.add_argument('-d', '--destination',  help='Filter by destination / origin')
+    parser.add_argument('-s', '--status',
+                        help='Filter by flight status: On-time, Delayed, Canceled, Landed ...')
+    parser.add_argument('-a', '--airline', help='Filter by airline')
+    parser.add_argument('-t','--terminal', help='Filter by Terminal (A, B or C)')
+    parser.add_argument('-fn','--flightnumber', help='Filter by flight number')
     args = parser.parse_args()
 
     df = newark_df(args.arrivals_departures, args.day)
-    if args.arrivals_departures == 'Departures':
-        verb = 'leave'
+    if args.day == CFG.TOMORROW:
+        if args.arrivals_departures.lower() == CFG.DEPARTURES:
+            verb = CFG.FUTURE_L
+        else:
+            verb = CFG.FUTURE_A
+    elif args.day == CFG.TODAY:
+        if args.arrivals_departures.lower() == CFG.DEPARTURES:
+            verb = CFG.PAST_L
+        else:
+            verb = CFG.FUTURE_A
     else:
-        verb = 'arrive at'
+        if args.arrivals_departures.lower() == CFG.DEPARTURES:
+            verb = CFG.PRESENT_L
+        else:
+            verb = CFG.PRESENT_A
+    if args.arrivals_departures.lower() == CFG.DEPARTURES:
+        prep = CFG.TO
+    else:
+        prep = CFG.FROM
 
     if args.destination:
-        print("The following flights will {} Newark {}: {}".format(
-                  verb, args.day, " and ".join([", ".join(df['City'][:len(df['City'])-1]),df['City'][len(df['City'])-1]])))
+        df = df.dropna(subset=['City'])
+        df = df[df['City'].str.contains(args.destination)]
 
-    if args.ontime:
-        ontime = get_status_('On-time', df)
-        print("The flights on time are: {}".format(
-                " and ".join([", ".join(ontime['City'][:len(ontime['City'])-1]),ontime['City'][ontime(df['City'])-1]])))
+    if args.status:
+        df = df.dropna(subset=['Status'])
+        df = df[df['Status'].str.contains(args.status)]
 
-    if args.delayed:
-        delayed = get_status_('Delayed', df)
-        print("The flights delayed are: {}".format(
-                ", ".join(delayed['City'])))
+    if args.airline:
+        df = df.dropna(subset=['Airline'])
+        df = df[df['Airline'].str.contains(args.airline)]
 
-    if args.canceled:
-        delayed = get_status_('Canceled', df)
-        print("The flights canceled are: {}".format(
-                ", ".join(delayed['City'])))
+    if args.terminal:
+        if args.arrivals_departures.lower() == CFG.DEPARTURES:
+            df = df.dropna(subset=['Departure_Terminal'])
+            df = df[df['Departure_Terminal'].str.contains(args.terminal.upper())]
+        else:
+            df = df.dropna(subset=['Arrival_Terminal'])
+            df = df[df['Arrival_Terminal'].str.contains(args.terminal.upper())]
 
-    if args.from0:
-        slot = get_time_slot(CFG.FIRST_SECTION, df)
-        print("The following flights will/have {} Newark from midnight to 6am {}:{}".format(
-             verb, args.arrivals_departures, ", ".join(slot['City'])))
+    if args.flightnumber:
+        df = df.dropna(subset=['Flight_number'])
+        df = df[df['Flight_number'] == args.flightnumber]
 
-    if args.from6:
-        slot = get_time_slot(CFG.SECOND_SECTION, df)
-        print("The following flights will/have {} Newark from 6am to 12pm {}:{}".format(
-            verb, args.arrivals_departures, ", ".join(slot['City'])))
-
-    if args.from12:
-        slot = get_time_slot(CFG.THIRD_SECTION, df)
-        print("The following flights will/have {} Newark from 12pm to 6pm {}:{}".format(
-            verb, args.arrivals_departures, ", ".join(slot['City'])))
-
-    if args.from18:
-        slot = get_time_slot(CFG.FOURTH_SECTION, df)
-        print("The following flights {} Newark from 6pm to 12am {}:{}".format(
-            verb, args.arrivals_departures, ", ".join(slot['City'])))
-
-    if args.terminala:
-        terminal = get_terminal(args.arrivals_departures, CFG.A, df)
-        print("These flights {} Newark {} at terminal A:".format(
-            verb, args.arrivals_departures, ", ".join(terminal['City'])))
-
-    if args.terminalb:
-        terminal = get_terminal(args.arrivals_departures, CFG.B, df)
-        print("These flights {} Newark {} at terminal B:".format(
-            verb, args.arrivals_departures,
-            ", ".join(terminal['City'])))
-
-    if args.terminalc:
-        terminal = get_terminal(args.arrivals_departures, CFG.C, df)
-        print("These flights {} Newark {} at terminal C:".format(
-            verb, args.arrivals_departures,
-            ", ".join(terminal['City'])))
+    if df.shape[CFG.NUMBER_ROWS] != CFG.EMPTY:
+        print('{}, the following flights {} Newark:'.format(args.day.capitalize(),verb))
+        flight_num = [", ".join(flightnum.split(CFG.NEW_LINE)) for flightnum in df['Flight_number']]
+        dest = [dest for dest in df['City']]
+        term = [term for term in df['Departure_Terminal']]
+        gate = [gate for gate in df['Departure_Gate']]
+        airline = [airline for airline in df['Airline']]
+        status = [status for status in df['Status']]
+        for index in range(len(flight_num)):
+            print('Flight number :{}, {} {} from Terminal {} and Gate {} with {}, Status :{}'.format(
+                flight_num[index], prep, dest[index], term[index], gate[index], airline[index],
+                status[index]
+            ))
+    else:
+        print('No flight are meeting our filters ! ')
 
 
 if __name__ == '__main__':

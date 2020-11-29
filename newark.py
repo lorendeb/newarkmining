@@ -4,7 +4,7 @@ import requests
 import config as CFG
 import logging
 import pandas as pd
-from datetime import date
+from datetime import datetime
 from datetime import timedelta
 
 
@@ -188,11 +188,11 @@ def newark_df(arr_depart, day=CFG.TODAY):
     # check inputs are correct and create datetime
     if day in CFG.DAYS:
         if day == CFG.TODAY:
-            date_ = date.today()
+            date_ = datetime.today()
         elif day == CFG.YESTERDAY:
-            date_ = date.today() - timedelta(days=CFG.YESTERDAY_DELTA)
+            date_ = datetime.today() - timedelta(days=CFG.YESTERDAY_DELTA)
         else:
-            date_ = date.today() + timedelta(days=CFG.TOMORROW_DELTA)
+            date_ = datetime.today() + timedelta(days=CFG.TOMORROW_DELTA)
         date_.strftime(CFG.DATE_FORMAT)
     else:
         raise ValueError('You should select today,yesterday or tomorrow as input')
@@ -205,7 +205,7 @@ def newark_df(arr_depart, day=CFG.TODAY):
 
     # from new_df_col, get list of flight number to build the url for scrapping each flight number page
     # some flights are multiple flight numbers, getting the first one (same data on all pages)
-    flight_list = [flight.split(CFG.NEW_LINE)[CFG.FIRST_FLIGHT] for flight in
+    flight_list = [flight.split(',')[CFG.FIRST_FLIGHT] for flight in
                    newark_df_col['Flight_number']]
     # create dataframe from the flight numbers pages
     newark_df_row = get_df_row_g(arr_depart,day, flight_list)

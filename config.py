@@ -14,7 +14,7 @@ START_URL = 0
 
 # scrapping 4 website to have all day flight
 TIMES = [0, 6, 12, 18]
-DATE_FORMAT = "%m/%d/%Y, %H:%M:%S"
+DATE_FORMAT = "%d/%m/%Y %H:%M"
 TODAY = 'today'
 YESTERDAY = 'yesterday'
 YESTERDAY_DELTA = 1
@@ -37,19 +37,14 @@ DEPARTURES = 'departures'
 ARRIVAL = 'arrival'
 DEPARTURE = 'departure'
 
-# comamnd line functions
-MIDNIGHT = '00:00'
-EARLY_MORNING = '06:00'
-NOON = '12:00'
-AFTERNOON = '18:00'
-
-# Argparse
-#time slot section
-FIRST_SECTION = 0
-SECOND_SECTION = 6
-THIRD_SECTION = 12
-FOURTH_SECTION = 18
-# terminal name
-A = 'A'
-B = 'B'
-C = 'C'
+# argparse:
+NUMBER_ROWS = 0
+EMPTY = 0
+FUTURE_L = 'will leave'
+FUTURE_A = 'will arrive at'
+PAST_L = 'left'
+PAST_A = 'arrived at'
+PRESENT_L = 'leave'
+PRESENT_A = 'arrive'
+TO = 'to'
+FROM = 'from'
