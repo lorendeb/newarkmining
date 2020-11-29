@@ -5,8 +5,9 @@ from newark import *
 from small_df import *
 import numpy as np
 import config as CFG
+import logging
 
-logging.basicConfig(filename='databse.log',
+logging.basicConfig(filename='database.log',
                     format='%(asctime)s-%(levelname)s-FILE:%(filename)s-FUNC:%(funcName)s-LINE %(lineno)d: %(message)s',
                     level=logging.INFO)
 
@@ -32,7 +33,7 @@ def use_db(cursor):
     '''
     try:
         cursor.execute("USE {}".format(CFG.DB_NAME))
-        logging.info('mysql is using {}'.format(CFG.DB_NAME)
+        logging.info('mysql is using {}'.format(CFG.DB_NAME))
         print('USING TABLE {}'.format(CFG.DB_NAME))
     except mysql.connector.Error as err:
         logging.error("Database {} does not exists.".format(CFG.DB_NAME))
@@ -82,6 +83,8 @@ def insert_to_table(table,df):
     mydb.commit()
 
 if __name__ == '__main__':
+
+
     #creating db based on scarped data
     arrivals_df_tod = newark_df('arrivals','today')
     arrivals_df_tom = newark_df('arrivals', 'tomorrow')
@@ -99,7 +102,9 @@ if __name__ == '__main__':
     all_flights_df.drop('City_Shortname', axis=1, inplace=True)
 
     #connect to mysql
-    mydb = mysql.connector.connect(user='root', password='winston1', host='localhost')
+    user_name = input('Please enter username for MySql')
+    password = input('Please enter password for MySql')
+    mydb = mysql.connector.connect(user=user_name, password=password, host='localhost')
     cursor = mydb.cursor()
 
     #create db, use it and create tables
