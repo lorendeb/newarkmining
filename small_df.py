@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 
 def flight_num_df(df):
@@ -14,7 +15,7 @@ def flight_num_df(df):
             flight_num_split.append(new_tup)
     first_column = pd.DataFrame([range(len(flight_num_split))]).T
     first_column = first_column.rename(columns={0: 'orig_ind'})
-    flight_num = pd.DataFrame(flight_num_split, columns=['flight_ind','flight_num'])
+    flight_num = pd.DataFrame(flight_num_split, columns=['flight_id','Flight_number'])
     all_flight_num = pd.concat([first_column,flight_num], axis=1)
 
     return all_flight_num
@@ -23,6 +24,7 @@ def cities_df(df):
     city_dict = {}
     for index,row in df.iterrows():
         city_dict[row['City']] = row['City_Shortname']
-    city_df = pd.DataFrame(list(city_dict.items()), columns=['city_name','city_short_name'])
+    city_df = pd.DataFrame(list(city_dict.items()), columns=['City','City_Shortname'])
     return city_df
+
 
