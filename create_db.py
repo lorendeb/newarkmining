@@ -107,9 +107,11 @@ if __name__ == '__main__':
     flights_df = flight_num_df(all_flights_df)
     city_df = cities_df(cities)
 
-    insert_to_table('all_flights',all_flights_df)
-    insert_to_table('flights', flights_df)
-    insert_to_table('city', city_df)
+    answer = input('Do you want to insert data to db? (y/n)')
+    if answer == 'y':
+        insert_to_table('all_flights',all_flights_df)
+        insert_to_table('flights', flights_df)
+        insert_to_table('city', city_df)
 
 cursor.close()
 mydb.close()
