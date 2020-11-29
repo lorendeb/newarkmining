@@ -7,7 +7,7 @@ import numpy as np
 import config as CFG
 import logging
 
-logging.basicConfig(filename='database.log',
+logging.basicConfig(filename='newark.log',
                     format='%(asctime)s-%(levelname)s-FILE:%(filename)s-FUNC:%(funcName)s-LINE %(lineno)d: %(message)s',
                     level=logging.INFO)
 
