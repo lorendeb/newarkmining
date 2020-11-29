@@ -82,9 +82,9 @@ def insert_to_table(table,df):
     print('Insert values to table {} completed'.format(table))
     mydb.commit()
 
+
 if __name__ == '__main__':
-
-
+    print('Scraping data from website... please wait')
     #creating db based on scarped data
     arrivals_df_tod = newark_df('arrivals','today')
     arrivals_df_tom = newark_df('arrivals', 'tomorrow')
