@@ -53,7 +53,7 @@ FROM = 'from'
 DB_NAME = 'newark'
 TABLES = {}
 TABLES['all_flights'] = ('''CREATE TABLE all_flights 
-                        (flight_id INT PRIMARY KEY AUTO_INCREMENT unique not null,
+                        (flight_id INT PRIMARY KEY AUTO_INCREMENT,
                         City VARCHAR(255),
                         Flight_number VARCHAR(255),
                         Airline VARCHAR(255),
