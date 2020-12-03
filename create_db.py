@@ -23,7 +23,6 @@ def create_database(cursor):
     except mysql.connector.Error as err:
         logging.error("Failed creating database: {}".format(err))
         print("Failed creating database: {}".format(err))
-        exit(1)
     mydb.commit()
 
 def use_db(cursor):
@@ -34,7 +33,7 @@ def use_db(cursor):
     try:
         cursor.execute("USE {}".format(CFG.DB_NAME))
         logging.info('mysql is using {}'.format(CFG.DB_NAME))
-        print('USING TABLE {}'.format(CFG.DB_NAME))
+        print('USING DB {}'.format(CFG.DB_NAME))
     except mysql.connector.Error as err:
         logging.error("Database {} does not exists.".format(CFG.DB_NAME))
         print("Database {} does not exists.".format(CFG.DB_NAME))
@@ -81,6 +80,7 @@ def insert_to_table(table,df):
     logging.info('Insert values to table {} completed'.format(table))
     print('Insert values to table {} completed'.format(table))
     mydb.commit()
+
 
 
 if __name__ == '__main__':

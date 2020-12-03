@@ -53,7 +53,7 @@ FROM = 'from'
 DB_NAME = 'newark'
 TABLES = {}
 TABLES['all_flights'] = ('''CREATE TABLE all_flights 
-                        (flight_id INT PRIMARY KEY AUTO_INCREMENT,
+                        (flight_id INT PRIMARY KEY AUTO_INCREMENT unique not null,
                         City VARCHAR(255),
                         Flight_number VARCHAR(255),
                         Airline VARCHAR(255),
@@ -72,12 +72,10 @@ TABLES['flights'] = ('''CREATE TABLE flights
                         (orig_ind INT PRIMARY KEY, 
                         flight_id INT,
                         flight_number VARCHAR(255))''')
-#                        CONSTRAINT fk_all_flights FOREIGN KEY(flight_id) REFERENCES all_flights(flight_id))''')
-
 
 TABLES['city'] = ('''CREATE TABLE city 
                         (city_id INT PRIMARY KEY AUTO_INCREMENT,
                         City VARCHAR(255),
                         City_Shortname VARCHAR(255))''')
-#                        CONSTRAINT fk_all_flights FOREIGN KEY(City) REFERENCES all_flights(City))''')
+
 
