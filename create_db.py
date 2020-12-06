@@ -102,7 +102,7 @@ if __name__ == '__main__':
     all_flights_df.drop('City_Shortname', axis=1, inplace=True)
 
     #connect to mysql
-    user_name = input('Please enter username for MySql')
+    user_name = input('Please enter username for MySql (usually root)')
     password = input('Please enter password for MySql')
     mydb = mysql.connector.connect(user=user_name, password=password, host='localhost')
     cursor = mydb.cursor()
