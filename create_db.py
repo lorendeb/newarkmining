@@ -82,57 +82,96 @@ def insert_to_table(table,df):
     mydb.commit()
 
 
-
-if __name__ == '__main__':
-    print('Scraping data from website... please wait')
-    #creating db based on scarped data
-    arrivals_df_tod = newark_df('arrivals','today')
-    arrivals_df_tom = newark_df('arrivals', 'tomorrow')
-    arrivals_df_yes = newark_df('arrivals', 'yesterday')
-    departures_df_tod = newark_df('departures','today')
-    #departures_df_tom = newark_df('departures', 'tomorrow')
-    departures_df_yes = newark_df('departures', 'yesterday')
-
-    #concat all df to one big df - all information from 3 days and departures+arrivals
-    all_flights_df = pd.concat([arrivals_df_tod,arrivals_df_tom,arrivals_df_yes,departures_df_tod,departures_df_yes])
-    all_flights_df.drop_duplicates(inplace=True)
-
-    #creating df for cities to use in city table
-    cities = all_flights_df[['City','City_Shortname']]
-    all_flights_df.drop('City_Shortname', axis=1, inplace=True)
-
-    #connect to mysql
+def connect_mysql():
+    '''
+    creatng connection to mysql
+    :return: cursor to use for queries
+    '''
     user_name = input('Please enter username for MySql (usually root)')
     password = input('Please enter password for MySql')
     mydb = mysql.connector.connect(user=user_name, password=password, host='localhost')
     cursor = mydb.cursor()
 
-    #create db, use it and create tables
-    create_database(cursor)
-    use_db(cursor)
-    create_table(cursor)
+    return mydb,cursor
 
-    #if data as already inserted to table, change index to match the last index on table
+def create_all_flights_df(cursor):
+    '''
+    create 6 df for each information kind.
+    concating all df to one df all_flights_df
+    connect to mysql to check if there is a table and match the index of the new scarped info
+    fixing the index.
+    :return: all_flights which is the big df of the last scraping
+    '''
+
+    print('Scraping data from website... please wait')
+
+    # creating df based on scarped data
+    arrivals_df_tod = newark_df('arrivals', 'today')
+    arrivals_df_tom = newark_df('arrivals', 'tomorrow')
+    arrivals_df_yes = newark_df('arrivals', 'yesterday')
+    departures_df_tod = newark_df('departures', 'today')
+    # departures_df_tom = newark_df('departures', 'tomorrow')
+    departures_df_yes = newark_df('departures', 'yesterday')
+
+    # concat all df to one big df - all information from 3 days and departures+arrivals
+    all_flights_df = pd.concat([arrivals_df_tod, arrivals_df_tom, arrivals_df_yes, departures_df_tod, departures_df_yes])
+    all_flights_df.drop_duplicates(inplace=True)
+
+    #checking the last index in the table all_flights(if exist)
+    #if so - defining the first index of the scraped table to match
     cursor.execute("select flight_id from all_flights order by flight_id DESC LIMIT 1")
     last_ind = cursor.fetchall()
     if last_ind:
         last_ind = last_ind[0][0]
         if last_ind >= 0:
-            all_flights = all_flights_df.set_index(np.arange(last_ind+1, last_ind+1+len(all_flights_df)))
+            all_flights = all_flights_df.set_index(np.arange(last_ind + 1, last_ind + 1 + len(all_flights_df)))
 
-    #using functions to split df to 3 df that matches the tables
-    flights_df = flight_num_df(all_flights_df)
+    return all_flights
+
+
+def crate_small_df(all_flights):
+    '''
+    creating 2 small df for the tables
+    :param all_flights: the ig df from scraping
+    :return: 2 small df to match the tables in db
+    '''
+    cities = all_flights[['City', 'City_Shortname']]
+    all_flights.drop('City_Shortname', axis=1, inplace=True)
+    flights_df = flight_num_df(all_flights)
     city_df = cities_df(cities)
 
-    #checking if the user want to insert data to db. if yes - insert data to 3 tables
+    return flights_df,city_df
+
+def create_db_tables(mydb,cursor):
+    '''
+    create the db and tables in mysql
+    :param mydb: connction to db
+    :param cursor: executing commands
+    '''
+    create_database(cursor)
+    use_db(cursor)
+    create_table(cursor)
+
+def insert_info_to_tables(cursor):
+    '''
+    insert info from df to tables
+    :return:
+    '''
+    all_flights_df = create_all_flights_df(cursor)
+    flights_df, city_df = crate_small_df(all_flights_df)
+
     answer = input('Do you want to insert data to db? (y/n)')
     if answer == 'y':
         insert_to_table('all_flights',all_flights_df)
         insert_to_table('flights', flights_df)
         insert_to_table('city', city_df)
 
-    #clost connection to mysql
+
+def close_connection(mydb,cursor):
     cursor.close()
     mydb.close()
+
+
+
 
 
