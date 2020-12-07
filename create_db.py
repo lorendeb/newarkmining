@@ -67,7 +67,7 @@ def create_table(mydb,cursor):
                 print(err.msg)
     mydb.commit()
 
-def insert_to_table(table,df):
+def insert_to_table(mydb,cursor,table,df):
     '''
     Insert data from df to tables
     :param table: table to insert
@@ -124,20 +124,20 @@ def create_all_flights_df(cursor):
     if last_ind:
         last_ind = last_ind[0][0]
         if last_ind >= 0:
-            all_flights = all_flights_df.set_index(np.arange(last_ind + 1, last_ind + 1 + len(all_flights_df)))
+            all_flights_df = all_flights_df.set_index(np.arange(last_ind + 1, last_ind + 1 + len(all_flights_df)))
 
-    return all_flights
+    return all_flights_df
 
 
-def create_small_df(all_flights):
+def create_small_df(all_flights_df):
     '''
     creating 2 small df for the tables
     :param all_flights: the ig df from scraping
     :return: 2 small df to match the tables in db
     '''
-    cities = all_flights[['City', 'City_Shortname']]
-    all_flights.drop('City_Shortname', axis=1, inplace=True)
-    flights_df = flight_num_df(all_flights)
+    cities = all_flights_df[['City', 'City_Shortname']]
+    all_flights_df.drop('City_Shortname', axis=1, inplace=True)
+    flights_df = flight_num_df(all_flights_df)
     city_df = cities_df(cities)
 
     return flights_df,city_df
@@ -162,9 +162,9 @@ def insert_info_to_tables(mydb,cursor):
 
     answer = input('Do you want to insert data to db? (y/n)')
     if answer == 'y':
-        insert_to_table('all_flights',all_flights_df)
-        insert_to_table('flights', flights_df)
-        insert_to_table('city', city_df)
+        insert_to_table(mydb,cursor,'all_flights',all_flights_df)
+        insert_to_table(mydb,cursor,'flights', flights_df)
+        insert_to_table(mydb,cursor,'city', city_df)
 
 
 def close_connection(mydb,cursor):
