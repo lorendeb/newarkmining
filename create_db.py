@@ -177,7 +177,6 @@ def wrapper_db():
     insert_info_to_tables(mydb,cursor)
     close_connection(mydb,cursor)
 
-wrapper_db()
 
 
 
