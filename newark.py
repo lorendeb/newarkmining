@@ -230,11 +230,3 @@ def newark_df(arr_depart, day=CFG.TODAY):
 
     return newark_df
 
-
-if __name__ == '__main__':
-    to_from = input('Do you want to scrap over incoming flight (type *arrivals*) or leaving flight (type *departures*)')
-    try:
-        df = newark_df(to_from)
-        print(df)
-    except Exception as ex:
-        print(ex)
