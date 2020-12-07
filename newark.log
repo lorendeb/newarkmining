@@ -1789,3 +1789,16 @@
 2020-12-06 20:38:13,188-INFO-FILE:newark.py-FUNC:newark_df-LINE 205: Main website successfully converted to dataframe.
 2020-12-06 20:38:53,047-ERROR-FILE:newark.py-FUNC:get_df_row_g-LINE 160: Invalid website, request response: []
 2020-12-06 20:38:53,047-INFO-FILE:newark.py-FUNC:newark_df-LINE 213: Flight pages successfully converted to dataframe.
+2020-12-07 18:48:35,602-ERROR-FILE:create_db.py-FUNC:create_database-LINE 24: Failed creating database: 1007 (HY000): Can't create database 'newark'; database exists
+2020-12-07 18:50:59,439-ERROR-FILE:create_db.py-FUNC:create_database-LINE 24: Failed creating database: 1007 (HY000): Can't create database 'newark'; database exists
+2020-12-07 18:50:59,447-INFO-FILE:create_db.py-FUNC:use_db-LINE 35: mysql is using newark
+2020-12-07 18:50:59,631-ERROR-FILE:create_db.py-FUNC:create_table-LINE 64: Trying to create table that already exist
+2020-12-07 18:50:59,639-ERROR-FILE:create_db.py-FUNC:create_table-LINE 64: Trying to create table that already exist
+2020-12-07 18:50:59,639-ERROR-FILE:create_db.py-FUNC:create_table-LINE 64: Trying to create table that already exist
+2020-12-07 18:51:00,959-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-07 18:51:01,839-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-07 18:51:02,799-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-07 18:51:04,054-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-07 18:51:04,304-INFO-FILE:newark.py-FUNC:newark_df-LINE 205: Main website successfully converted to dataframe.
+2020-12-07 18:51:33,409-ERROR-FILE:newark.py-FUNC:get_df_row_g-LINE 160: Invalid website, request response: []
+2020-12-07 18:51:33,409-INFO-FILE:newark.py-FUNC:newark_df-LINE 213: Flight pages successfully converted to dataframe.

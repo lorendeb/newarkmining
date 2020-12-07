@@ -11,7 +11,7 @@ logging.basicConfig(filename='newark.log',
                     format='%(asctime)s-%(levelname)s-FILE:%(filename)s-FUNC:%(funcName)s-LINE %(lineno)d: %(message)s',
                     level=logging.INFO)
 
-def create_database(cursor):
+def create_database(mydb,cursor):
     '''
     creating the database
     :param cursor: connection to mysql
@@ -25,7 +25,7 @@ def create_database(cursor):
         print("Failed creating database: {}".format(err))
     mydb.commit()
 
-def use_db(cursor):
+def use_db(mydb,cursor):
     '''
     Using database. if db doesn't exist - print a message and create it.
     :param cursor: connection to mysql
@@ -47,7 +47,7 @@ def use_db(cursor):
             print(err)
             exit(1)
 
-def create_table(cursor):
+def create_table(mydb,cursor):
     '''
     Creating tables based on TABLES defined in config (if not exist already).
     :param cursor: connection to mysql
@@ -148,11 +148,11 @@ def create_db_tables(mydb,cursor):
     :param mydb: connction to db
     :param cursor: executing commands
     '''
-    create_database(cursor)
-    use_db(cursor)
-    create_table(cursor)
+    create_database(mydb,cursor)
+    use_db(mydb,cursor)
+    create_table(mydb,cursor)
 
-def insert_info_to_tables(cursor):
+def insert_info_to_tables(mydb,cursor):
     '''
     insert info from df to tables
     :return:
@@ -171,7 +171,13 @@ def close_connection(mydb,cursor):
     cursor.close()
     mydb.close()
 
+def wrapper_db():
+    mydb, cursor = connect_mysql()
+    create_db_tables(mydb,cursor)
+    insert_info_to_tables(mydb,cursor)
+    close_connection(mydb,cursor)
 
+wrapper_db()
 
 
 
