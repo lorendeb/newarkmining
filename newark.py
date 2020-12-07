@@ -107,27 +107,6 @@ def get_df_column(soup):
     return df
 
 
-def get_df_row(arr_depar, day, flight_num_list):
-    """
-    build dataframe by row(flight by flight), from the flight number page, using requests
-    :param arr_depar: arrivals, departures
-    :param day: yesterday, today, tomorrow
-    :param flight_num_list
-    :return: dataframe with details of flight from flight number page
-    """
-    # create list of urls for each flight number
-    url_list = [get_url_flight(arr_depar, flight_num, day) for flight_num in flight_num_list]
-    final_list = []
-    for url in url_list:
-        sp = get_soup(url)
-        temp = get_list(sp, class_="flight-info__infobox-text")
-        temp.append(get_status(sp))
-        final_list.append(temp)
-    df = pd.DataFrame(final_list, columns=['Departure_Hour', 'Departure_Terminal', 'Departure_Gate',
-                                           'Arrival_Hour', 'Arrival_Terminal', 'Arrival_Gate', 'Status'])
-    return df
-
-
 def get_df_row_g(arr_depar, day, flight_num_list):
     """
     build dataframe by row(flight by flight), from the flight number page, using grequests
@@ -230,3 +209,5 @@ def newark_df(arr_depart, day=CFG.TODAY):
 
     return newark_df
 
+
+print(newark_df('arrivals', 'today'))
