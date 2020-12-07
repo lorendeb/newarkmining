@@ -129,7 +129,7 @@ def create_all_flights_df(cursor):
     return all_flights
 
 
-def crate_small_df(all_flights):
+def create_small_df(all_flights):
     '''
     creating 2 small df for the tables
     :param all_flights: the ig df from scraping
@@ -158,7 +158,7 @@ def insert_info_to_tables(cursor):
     :return:
     '''
     all_flights_df = create_all_flights_df(cursor)
-    flights_df, city_df = crate_small_df(all_flights_df)
+    flights_df, city_df = create_small_df(all_flights_df)
 
     answer = input('Do you want to insert data to db? (y/n)')
     if answer == 'y':
