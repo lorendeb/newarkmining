@@ -1,4 +1,5 @@
 import pandas as pd
+from newark import newark_df
 import re
 
 
@@ -36,14 +37,11 @@ def all_flights_df(all_df):
     all_flights = all_flights.rename(columns={'airport': 'airport_id', 'status': 'status_id'})
 
     all_flights['estimated_hour'] = pd.to_datetime(
-        all_flights['estimated_hour'].apply(lambda x: re.sub(r'\s+((.*))', '', x)),
-        infer_datetime_format=True).dt.time
+        all_flights['estimated_hour'].apply(lambda x: x.split('(')[0]), infer_datetime_format=True).dt.time
     all_flights['departure_hour'] = pd.to_datetime(
-        all_flights['departure_hour'].apply(lambda x: re.sub(r'\s+((.*))', '', x)),
-        infer_datetime_format=True).dt.time
+        all_flights['departure_hour'].apply(lambda x: x.split('(')[0]), infer_datetime_format=True).dt.time
     all_flights['arrival_hour'] = pd.to_datetime(
-        all_flights['arrival_hour'].apply(lambda x: re.sub(r'\+((.*))', '', x)),
-        infer_datetime_format=True).dt.time
+        all_flights['arrival_hour'].apply(lambda x: x.split('(')[0]), infer_datetime_format=True).dt.time
     return all_flights
 
 
