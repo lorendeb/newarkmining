@@ -52,32 +52,43 @@ FROM = 'from'
 # database
 DB_NAME = 'newark'
 TABLES = {}
+TABLES['airports'] = ('''CREATE TABLE airports 
+                        (airport_id INT PRIMARY KEY AUTO_INCREMENT,
+                        airport VARCHAR(255),
+                        iata VARCHAR(255))''')
+
+TABLES['status'] = ('''CREATE TABLE status 
+                        (status_id INT PRIMARY KEY AUTO_INCREMENT,
+                        status VARCHAR(255))''')
+
+
 TABLES['all_flights'] = ('''CREATE TABLE all_flights 
                         (flight_id INT PRIMARY KEY AUTO_INCREMENT,
-                        City VARCHAR(255),
-                        Flight_number VARCHAR(255),
-                        Airline VARCHAR(255),
-                        Estimated_hour VARCHAR(255),
-                        Departure_Hour VARCHAR(255),
-                        Departure_Terminal VARCHAR(255),
-                        Departure_Gate VARCHAR(255),
-                        Arrival_Hour VARCHAR(255),
-                        Arrival_Terminal VARCHAR(255),
-                        Arrival_Gate VARCHAR(255),
-                        Status VARCHAR(255),
-                        Arrival_Departure VARCHAR(255),
-                        date VARCHAR(255))''')
+                        airport_id INT,
+                        estimated_hour TIME,
+                        departure_hour TIME,
+                        departure_terminal VARCHAR(255),
+                        departure_gate VARCHAR(255),
+                        arrival_hour TIME,
+                        arrival_terminal VARCHAR(255),
+                        arrival_gate VARCHAR(255),
+                        status_id INT,
+                        arrival_departure VARCHAR(255),
+                        date DATETIME,  
+                        CONSTRAINT fk_airport FOREIGN KEY(airport_id) REFERENCES airports(airport_id),
+                        CONSTRAINT fk_status FOREIGN KEY(status_id) REFERENCES status(status_id))''')
 
-TABLES['flights'] = ('''CREATE TABLE flights
-                        (orig_ind INT PRIMARY KEY, 
+TABLES['flights_numbers'] = ('''CREATE TABLE flights_numbers 
+                        (flights_numbers_id INT PRIMARY KEY AUTO_INCREMENT,
                         flight_id INT,
-                        flight_number VARCHAR(255))''')
+                        flight_number VARCHAR(255),
+                        CONSTRAINT fk_all_flights FOREIGN KEY(flight_id) REFERENCES all_flights(flight_id))''')
 
-TABLES['city'] = ('''CREATE TABLE city 
-                        (city_id INT PRIMARY KEY AUTO_INCREMENT,
-                        City VARCHAR(255),
-                        City_Shortname VARCHAR(255))''')
-
+TABLES['airline_per_flight'] = ('''CREATE TABLE airline_per_flight
+                                 (airline_per_flight_id INT PRIMARY KEY AUTO_INCREMENT,
+                                 flight_id INT,
+                                 airline_name VARCHAR(255),
+                                 CONSTRAINT fk_all_flights2 FOREIGN KEY(flight_id) REFERENCES all_flights(flight_id))''')
 
 # API
 url = "https://airport-info.p.rapidapi.com/airport"

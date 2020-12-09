@@ -97,13 +97,34 @@ def get_df_column(soup):
     flight_number_list = [", ".join(flight_num.split(CFG.NEW_LINE)) for flight_num in flight_number_list]
     airline_list = get_list(soup, class_="flight-col flight-col__airline")
     estimated_hour_list = get_list(soup, class_="flight-col flight-col__hour")
-    flight_dictionary = {'City': city_list,
-                         'City_Shortname': city_sn_list,
-                         'Flight_number': flight_number_list,
-                         'Airline': airline_list,
-                         'Estimated_hour': estimated_hour_list}
+    flight_dictionary = {'airport': city_list,
+                         'iata': city_sn_list,
+                         'flight_number': flight_number_list,
+                         'airline': airline_list,
+                         'estimated_hour': estimated_hour_list}
     df = pd.DataFrame(flight_dictionary)
     df.drop(df.index[CFG.FIRST_ROW], inplace=True)
+    return df
+
+
+def get_df_row(arr_depar, day, flight_num_list):
+    """
+    build dataframe by row(flight by flight), from the flight number page, using requests
+    :param arr_depar: arrivals, departures
+    :param day: yesterday, today, tomorrow
+    :param flight_num_list
+    :return: dataframe with details of flight from flight number page
+    """
+    # create list of urls for each flight number
+    url_list = [get_url_flight(arr_depar, flight_num, day) for flight_num in flight_num_list]
+    final_list = []
+    for url in url_list:
+        sp = get_soup(url)
+        temp = get_list(sp, class_="flight-info__infobox-text")
+        temp.append(get_status(sp))
+        final_list.append(temp)
+    df = pd.DataFrame(final_list, columns=['departure_hour', 'departure_terminal', 'departure_gate',
+                                           'arrival_hour', 'arrival_terminal', 'arrival_gate', 'status'])
     return df
 
 
@@ -145,8 +166,8 @@ def get_df_row_g(arr_depar, day, flight_num_list):
         temp.append(get_status(s))
         final_list.append(temp)
     # convert list of details lists to dataframe
-    df = pd.DataFrame(final_list, columns=['Departure_Hour', 'Departure_Terminal', 'Departure_Gate',
-                                        'Arrival_Hour', 'Arrival_Terminal', 'Arrival_Gate', 'Status'])
+    df = pd.DataFrame(final_list, columns=['departure_hour', 'departure_terminal', 'departure_gate',
+                                        'arrival_hour', 'arrival_terminal', 'arrival_gate', 'status'])
     return df
 
 
@@ -177,7 +198,7 @@ def newark_df(arr_depart, day=CFG.TODAY):
         raise ValueError('You should select today,yesterday or tomorrow as input')
 
     # create dataframe from the main website, 4 times for each part of the day
-    newark_df_col = pd.DataFrame(columns=['City','Flight_number','Airline','Estimated_hour'])
+    newark_df_col = pd.DataFrame(columns=['airport','flight_number','airline','estimated_hour'])
     for url in get_url(arr_depart, day):
         temp = get_df_column(get_soup(url))
         newark_df_col = pd.concat([newark_df_col,temp], ignore_index=True)
@@ -186,7 +207,7 @@ def newark_df(arr_depart, day=CFG.TODAY):
     # from new_df_col, get list of flight number to build the url for scrapping each flight number page
     # some flights are multiple flight numbers, getting the first one (same data on all pages)
     flight_list = [flight.split(',')[CFG.FIRST_FLIGHT] for flight in
-                   newark_df_col['Flight_number']]
+                   newark_df_col['flight_number']]
     # create dataframe from the flight numbers pages
     newark_df_row = get_df_row_g(arr_depart,day, flight_list)
     logging.info(f'Flight pages successfully converted to dataframe.')
@@ -199,12 +220,22 @@ def newark_df(arr_depart, day=CFG.TODAY):
 
     # add column with departure or arrival, to know which kind of flight it is
     if arr_depart == CFG.DEPARTURES:
-        newark_df['Arrival_Departure'] = CFG.DEPARTURE
+        newark_df['arrival_departure'] = CFG.DEPARTURE
     else:
-        newark_df['Arrival_Departure'] = CFG.ARRIVAL
+        newark_df['arrival_departure'] = CFG.ARRIVAL
 
     # add column with date and time
     # a flight can appear multiple time in the dataframe, but the status and hour can be updated
     newark_df['date'] = date_
 
     return newark_df
+
+
+if __name__ == '__main__':
+    to_from = input('Do you want to scrap over incoming flight (type *arrivals*) or leaving flight (type *departures*)')
+    try:
+        df = newark_df(to_from)
+        df.to_csv('df_example.csv')
+        print(df)
+    except Exception as ex:
+        print(ex)

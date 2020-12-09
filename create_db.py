@@ -1,7 +1,6 @@
 from __future__ import print_function
 import mysql.connector
-import pymysql
-from pymysql.connector import errorcode
+from mysql.connector import errorcode
 from newark import *
 from small_df import *
 import numpy as np
@@ -11,6 +10,7 @@ import logging
 logging.basicConfig(filename='newark.log',
                     format='%(asctime)s-%(levelname)s-FILE:%(filename)s-FUNC:%(funcName)s-LINE %(lineno)d: %(message)s',
                     level=logging.INFO)
+
 
 def create_database(mydb,cursor):
     '''
@@ -90,15 +90,12 @@ def connect_mysql():
     '''
     user_name = input('Please enter username for MySql (usually root)')
     password = input('Please enter password for MySql')
-    # mydb = mysql.connector.connect(user=user_name, password=password, host='localhost')
-    mydb = pymysql.connect(host='localhost',
-                                 user=user_name,
-                                 password=password)
+    mydb = mysql.connector.connect(user=user_name, password=password, host='localhost')
     cursor = mydb.cursor()
+
     return mydb,cursor
 
-
-def create_all_flights_df(cursor):
+def create_all_df(cursor):
     '''
     create 6 df for each information kind.
     concating all df to one df all_flights_df
@@ -114,12 +111,12 @@ def create_all_flights_df(cursor):
     arrivals_df_tom = newark_df('arrivals', 'tomorrow')
     arrivals_df_yes = newark_df('arrivals', 'yesterday')
     departures_df_tod = newark_df('departures', 'today')
-    # departures_df_tom = newark_df('departures', 'tomorrow')
+    #departures_df_tom = newark_df('departures', 'tomorrow')
     departures_df_yes = newark_df('departures', 'yesterday')
 
     # concat all df to one big df - all information from 3 days and departures+arrivals
-    all_flights_df = pd.concat([arrivals_df_tod, arrivals_df_tom, arrivals_df_yes, departures_df_tod, departures_df_yes])
-    all_flights_df.drop_duplicates(inplace=True)
+    all_df = pd.concat([arrivals_df_tod, arrivals_df_tom, arrivals_df_yes, departures_df_tod, departures_df_yes])
+    all_df.drop_duplicates(inplace=True)
 
     #checking the last index in the table all_flights(if exist)
     #if so - defining the first index of the scraped table to match
@@ -128,23 +125,24 @@ def create_all_flights_df(cursor):
     if last_ind:
         last_ind = last_ind[0][0]
         if last_ind >= 0:
-            all_flights_df = all_flights_df.set_index(np.arange(last_ind + 1, last_ind + 1 + len(all_flights_df)))
+            all_df = all_df.set_index(np.arange(last_ind + 1, last_ind + 1 + len(all_df)))
 
-    return all_flights_df
+    return all_df
 
 
-def create_small_df(all_flights_df):
+def create_small_df(all_df):
     '''
     creating 2 small df for the tables
     :param all_flights: the ig df from scraping
     :return: 2 small df to match the tables in db
     '''
-    cities = all_flights_df[['City', 'City_Shortname']]
-    all_flights_df.drop('City_Shortname', axis=1, inplace=True)
-    flights_df = flight_num_df(all_flights_df)
-    city_df = cities_df(cities)
+    airports = airports_df(all_df)
+    status = status_df(all_df)
+    all_flights = all_flights_df(all_df)
+    flights_numbers = flights_numbers_df(all_df)
+    airline_per_flight = airline_per_flight_df(all_df)
 
-    return flights_df,city_df
+    return airports,status,all_flights,flights_numbers,airline_per_flight
 
 def create_db_tables(mydb,cursor):
     '''
@@ -161,14 +159,14 @@ def insert_info_to_tables(mydb,cursor):
     insert info from df to tables
     :return:
     '''
-    all_flights_df = create_all_flights_df(cursor)
-    flights_df, city_df = create_small_df(all_flights_df)
+    all_df = create_all_df(cursor)
+    airports, status, all_flights, flights_numbers, airline_per_flight = create_small_df(all_df)
 
-    answer = input('Do you want to insert data to db? (y/n)')
-    if answer == 'y':
-        insert_to_table(mydb,cursor,'all_flights',all_flights_df)
-        insert_to_table(mydb,cursor,'flights', flights_df)
-        insert_to_table(mydb,cursor,'city', city_df)
+    insert_to_table(mydb,cursor,'airports',airports)
+    insert_to_table(mydb, cursor, 'status', status)
+    insert_to_table(mydb, cursor, 'all_flights', all_flights)
+    insert_to_table(mydb, cursor, 'flights_numbers', flights_numbers)
+    insert_to_table(mydb, cursor, 'airline_per_flight', airline_per_flight)
 
 
 def close_connection(mydb,cursor):
@@ -182,5 +180,4 @@ def wrapper_db():
     close_connection(mydb,cursor)
 
 wrapper_db()
-
 
