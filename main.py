@@ -1,4 +1,6 @@
-from newark import *
+from newark import newark_df
+from create_db import wrapper_db
+import config as CFG
 import argparse
 
 
@@ -14,11 +16,14 @@ def main():
     parser.add_argument('-a', '--airline', help='Filter by airline')
     parser.add_argument('-t','--terminal', help='Filter by Terminal (A, B or C)')
     parser.add_argument('-fn','--flightnumber', help='Filter by flight number')
+    parser.add_argument('-cb','--createdb',action="store_true", help='Create database for yesterday, today and tomorow flight')
     args = parser.parse_args()
 
-    try:
-        df = newark_df(args.arrivals_departures, args.day)
+    if args.createdb:
+        wrapper_db()
+    else:
 
+        df = newark_df(args.arrivals_departures, args.day)
         if args.day == CFG.TOMORROW:
             if args.arrivals_departures.lower() == CFG.DEPARTURES:
                 verb = CFG.FUTURE_L
@@ -76,11 +81,10 @@ def main():
                     flight_num[index], prep, dest[index], term[index], gate[index], airline[index],
                     status[index]
                 ))
+
+
         else:
             print('No flight are meeting our filters ! ')
-
-    except Exception as ex:
-        print(ex)
 
 
 if __name__ == '__main__':

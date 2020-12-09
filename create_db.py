@@ -1,6 +1,7 @@
 from __future__ import print_function
 import mysql.connector
-from mysql.connector import errorcode
+import pymysql
+from pymysql.connector import errorcode
 from newark import *
 from small_df import *
 import numpy as np
@@ -11,7 +12,7 @@ logging.basicConfig(filename='newark.log',
                     format='%(asctime)s-%(levelname)s-FILE:%(filename)s-FUNC:%(funcName)s-LINE %(lineno)d: %(message)s',
                     level=logging.INFO)
 
-def create_database(cursor):
+def create_database(mydb,cursor):
     '''
     creating the database
     :param cursor: connection to mysql
@@ -25,7 +26,7 @@ def create_database(cursor):
         print("Failed creating database: {}".format(err))
     mydb.commit()
 
-def use_db(cursor):
+def use_db(mydb,cursor):
     '''
     Using database. if db doesn't exist - print a message and create it.
     :param cursor: connection to mysql
@@ -47,7 +48,7 @@ def use_db(cursor):
             print(err)
             exit(1)
 
-def create_table(cursor):
+def create_table(mydb,cursor):
     '''
     Creating tables based on TABLES defined in config (if not exist already).
     :param cursor: connection to mysql
@@ -67,7 +68,7 @@ def create_table(cursor):
                 print(err.msg)
     mydb.commit()
 
-def insert_to_table(table,df):
+def insert_to_table(mydb,cursor,table,df):
     '''
     Insert data from df to tables
     :param table: table to insert
@@ -89,10 +90,13 @@ def connect_mysql():
     '''
     user_name = input('Please enter username for MySql (usually root)')
     password = input('Please enter password for MySql')
-    mydb = mysql.connector.connect(user=user_name, password=password, host='localhost')
+    # mydb = mysql.connector.connect(user=user_name, password=password, host='localhost')
+    mydb = pymysql.connect(host='localhost',
+                                 user=user_name,
+                                 password=password)
     cursor = mydb.cursor()
-
     return mydb,cursor
+
 
 def create_all_flights_df(cursor):
     '''
@@ -124,20 +128,20 @@ def create_all_flights_df(cursor):
     if last_ind:
         last_ind = last_ind[0][0]
         if last_ind >= 0:
-            all_flights = all_flights_df.set_index(np.arange(last_ind + 1, last_ind + 1 + len(all_flights_df)))
+            all_flights_df = all_flights_df.set_index(np.arange(last_ind + 1, last_ind + 1 + len(all_flights_df)))
 
-    return all_flights
+    return all_flights_df
 
 
-def crate_small_df(all_flights):
+def create_small_df(all_flights_df):
     '''
     creating 2 small df for the tables
     :param all_flights: the ig df from scraping
     :return: 2 small df to match the tables in db
     '''
-    cities = all_flights[['City', 'City_Shortname']]
-    all_flights.drop('City_Shortname', axis=1, inplace=True)
-    flights_df = flight_num_df(all_flights)
+    cities = all_flights_df[['City', 'City_Shortname']]
+    all_flights_df.drop('City_Shortname', axis=1, inplace=True)
+    flights_df = flight_num_df(all_flights_df)
     city_df = cities_df(cities)
 
     return flights_df,city_df
@@ -148,30 +152,35 @@ def create_db_tables(mydb,cursor):
     :param mydb: connction to db
     :param cursor: executing commands
     '''
-    create_database(cursor)
-    use_db(cursor)
-    create_table(cursor)
+    create_database(mydb,cursor)
+    use_db(mydb,cursor)
+    create_table(mydb,cursor)
 
-def insert_info_to_tables(cursor):
+def insert_info_to_tables(mydb,cursor):
     '''
     insert info from df to tables
     :return:
     '''
     all_flights_df = create_all_flights_df(cursor)
-    flights_df, city_df = crate_small_df(all_flights_df)
+    flights_df, city_df = create_small_df(all_flights_df)
 
     answer = input('Do you want to insert data to db? (y/n)')
     if answer == 'y':
-        insert_to_table('all_flights',all_flights_df)
-        insert_to_table('flights', flights_df)
-        insert_to_table('city', city_df)
+        insert_to_table(mydb,cursor,'all_flights',all_flights_df)
+        insert_to_table(mydb,cursor,'flights', flights_df)
+        insert_to_table(mydb,cursor,'city', city_df)
 
 
 def close_connection(mydb,cursor):
     cursor.close()
     mydb.close()
 
+def wrapper_db():
+    mydb, cursor = connect_mysql()
+    create_db_tables(mydb,cursor)
+    insert_info_to_tables(mydb,cursor)
+    close_connection(mydb,cursor)
 
-
+wrapper_db()
 
 

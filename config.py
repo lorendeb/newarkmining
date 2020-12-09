@@ -49,7 +49,7 @@ PRESENT_A = 'arrive'
 TO = 'to'
 FROM = 'from'
 
-#database
+# database
 DB_NAME = 'newark'
 TABLES = {}
 TABLES['all_flights'] = ('''CREATE TABLE all_flights 
@@ -78,4 +78,13 @@ TABLES['city'] = ('''CREATE TABLE city
                         City VARCHAR(255),
                         City_Shortname VARCHAR(255))''')
 
+
+# API
+url = "https://airport-info.p.rapidapi.com/airport"
+querystring = {"iata":""}
+IATA = 'iata'
+headers = {
+    'x-rapidapi-key': "30f28376ccmsh3db2a78e30f0e1ep1290e8jsnc565f1ff7fb3",
+    'x-rapidapi-host': "airport-info.p.rapidapi.com"
+}
 

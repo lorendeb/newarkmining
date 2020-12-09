@@ -208,6 +208,3 @@ def newark_df(arr_depart, day=CFG.TODAY):
     newark_df['date'] = date_
 
     return newark_df
-
-
-print(newark_df('arrivals', 'today'))
