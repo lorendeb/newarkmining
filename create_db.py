@@ -140,9 +140,9 @@ def create_small_df(all_df):
     status = status_df(all_df)
     all_flights = all_flights_df(all_df)
     flights_numbers = flights_numbers_df(all_df)
-    airline_per_flights = airline_per_flights_df(all_df)
+    airline_per_flight = airline_per_flight_df(all_df)
 
-    return airports,status,all_flights,flights_numbers,airline_per_flights
+    return airports,status,all_flights,flights_numbers,airline_per_flight
 
 def create_db_tables(mydb,cursor):
     '''
@@ -160,13 +160,13 @@ def insert_info_to_tables(mydb,cursor):
     :return:
     '''
     all_df = create_all_df(cursor)
-    airports, status, all_flights, flights_numbers, airline_per_flights = create_small_df(all_df)
+    airports, status, all_flights, flights_numbers, airline_per_flight = create_small_df(all_df)
 
     insert_to_table(mydb,cursor,'airports',airports)
     insert_to_table(mydb, cursor, 'status', status)
     insert_to_table(mydb, cursor, 'all_flights', all_flights)
     insert_to_table(mydb, cursor, 'flights_numbers', flights_numbers)
-    insert_to_table(mydb, cursor, 'airline_per_flights', airline_per_flights)
+    insert_to_table(mydb, cursor, 'airline_per_flight', airline_per_flight)
 
 
 def close_connection(mydb,cursor):

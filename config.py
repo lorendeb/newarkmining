@@ -65,11 +65,11 @@ TABLES['status'] = ('''CREATE TABLE status
 TABLES['all_flights'] = ('''CREATE TABLE all_flights 
                         (flight_id INT PRIMARY KEY AUTO_INCREMENT,
                         airport_id INT,
-                        estimated_hour DATETIME,
-                        departure_hour DATETIME,
+                        estimated_hour TIME,
+                        departure_hour TIME,
                         departure_terminal VARCHAR(255),
                         departure_gate VARCHAR(255),
-                        arrival_hour DATETIME,
+                        arrival_hour TIME,
                         arrival_terminal VARCHAR(255),
                         arrival_gate VARCHAR(255),
                         status_id INT,
@@ -84,8 +84,8 @@ TABLES['flights_numbers'] = ('''CREATE TABLE flights_numbers
                         flight_number VARCHAR(255),
                         CONSTRAINT fk_all_flights FOREIGN KEY(flight_id) REFERENCES all_flights(flight_id))''')
 
-TABLES['airlines_per_flight'] = ('''CREATE TABLE airlines_per_flight
-                                 (airlines_per_flight_id INT PRIMARY KEY AUTO_INCREMENT,
+TABLES['airline_per_flight'] = ('''CREATE TABLE airline_per_flight
+                                 (airline_per_flight_id INT PRIMARY KEY AUTO_INCREMENT,
                                  flight_id INT,
                                  airline_name VARCHAR(255),
                                  CONSTRAINT fk_all_flights2 FOREIGN KEY(flight_id) REFERENCES all_flights(flight_id))''')

@@ -59,7 +59,7 @@ def flights_numbers_df(all_df):
     return flights_numbers
 
 
-def airline_per_flights_df(all_df):
+def airline_per_flight_df(all_df):
     airlines = list(enumerate(all_df['airline'], 1))
     airlines_split = []
     for tup in airlines:
@@ -69,6 +69,6 @@ def airline_per_flights_df(all_df):
             new_tup.append(tup[0])
             new_tup.append(airline[j])
             airlines_split.append(new_tup)
-    airlines_per_flight = pd.DataFrame(airlines_split, columns=['flight_id', 'airline_name'])
-    airlines_per_flight.index = airlines_per_flight.index + 1
-    return airlines_per_flight
+    airline_per_flight = pd.DataFrame(airlines_split, columns=['flight_id', 'airline_name'])
+    airline_per_flight.index = airline_per_flight.index + 1
+    return airline_per_flight
