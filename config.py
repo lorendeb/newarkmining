@@ -99,3 +99,17 @@ headers = {
     'x-rapidapi-host': "airport-info.p.rapidapi.com"
 }
 
+query_list_iata = "SELECT DISTINCT iata from airports"
+
+query_list_columns = "DESCRIBE airports"
+
+api_columns = ["icao", "name", "location", "street_number", "street",
+            "city", "county", "state", "country_iso", "country", "postal_code",
+            "phone", "website"]
+
+query_update_airport_table = """UPDATE airports set icao=%s, name=%s, location=%s, street_number=%s, street=%s,
+            city=%s, county=%s, state=%s, country_iso=%s, country=%s, postal_code=%s,
+            phone=%s, website=%s WHERE iata=%s"""
+
+query_safe_updates_0='SET SQL_SAFE_UPDATES=0;'
+query_safe_updates_1='SET SQL_SAFE_UPDATES=1;'

@@ -3098,3 +3098,451 @@
 2020-12-09 10:18:17,267-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 81: Insert values to table all_flights completed
 2020-12-09 10:18:19,513-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 81: Insert values to table flights_numbers completed
 2020-12-09 10:18:21,829-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 81: Insert values to table airline_per_flight completed
+2020-12-09 15:14:24,543-INFO-FILE:create_db.py-FUNC:create_database-LINE 22: CREATE DATABASE newark
+2020-12-09 15:14:24,547-INFO-FILE:create_db.py-FUNC:use_db-LINE 36: mysql is using newark
+2020-12-09 15:14:24,649-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airports was created
+2020-12-09 15:14:24,692-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table status was created
+2020-12-09 15:14:24,790-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table all_flights was created
+2020-12-09 15:14:24,902-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table flights_numbers was created
+2020-12-09 15:14:24,978-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airline_per_flight was created
+2020-12-09 15:14:25,989-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:14:26,815-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:14:27,605-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:14:28,619-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:14:28,744-INFO-FILE:newark.py-FUNC:newark_df-LINE 205: Main website successfully converted to dataframe.
+2020-12-09 15:14:51,286-ERROR-FILE:newark.py-FUNC:get_df_row_g-LINE 160: Invalid website, request response: []
+2020-12-09 15:14:51,287-INFO-FILE:newark.py-FUNC:newark_df-LINE 213: Flight pages successfully converted to dataframe.
+2020-12-09 15:15:29,691-INFO-FILE:create_db.py-FUNC:create_database-LINE 22: CREATE DATABASE newark
+2020-12-09 15:15:29,692-INFO-FILE:create_db.py-FUNC:use_db-LINE 36: mysql is using newark
+2020-12-09 15:15:29,752-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airports was created
+2020-12-09 15:15:29,781-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table status was created
+2020-12-09 15:15:29,830-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table all_flights was created
+2020-12-09 15:15:29,878-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table flights_numbers was created
+2020-12-09 15:15:29,921-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airline_per_flight was created
+2020-12-09 15:15:30,620-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:15:31,398-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:15:32,217-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:15:33,127-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:15:33,258-INFO-FILE:newark.py-FUNC:newark_df-LINE 205: Main website successfully converted to dataframe.
+2020-12-09 15:15:55,895-ERROR-FILE:newark.py-FUNC:get_df_row_g-LINE 160: Invalid website, request response: []
+2020-12-09 15:15:55,895-INFO-FILE:newark.py-FUNC:newark_df-LINE 213: Flight pages successfully converted to dataframe.
+2020-12-09 15:16:32,380-INFO-FILE:create_db.py-FUNC:create_database-LINE 22: CREATE DATABASE newark
+2020-12-09 15:16:32,381-INFO-FILE:create_db.py-FUNC:use_db-LINE 36: mysql is using newark
+2020-12-09 15:16:32,470-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airports was created
+2020-12-09 15:16:32,531-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table status was created
+2020-12-09 15:16:32,603-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table all_flights was created
+2020-12-09 15:16:32,681-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table flights_numbers was created
+2020-12-09 15:16:32,736-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airline_per_flight was created
+2020-12-09 15:16:33,428-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:16:34,204-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:16:35,030-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:16:35,944-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:16:36,056-INFO-FILE:newark.py-FUNC:newark_df-LINE 205: Main website successfully converted to dataframe.
+2020-12-09 15:16:58,944-ERROR-FILE:newark.py-FUNC:get_df_row_g-LINE 160: Invalid website, request response: []
+2020-12-09 15:16:58,945-INFO-FILE:newark.py-FUNC:newark_df-LINE 213: Flight pages successfully converted to dataframe.
+2020-12-09 15:21:39,625-INFO-FILE:create_db.py-FUNC:create_database-LINE 22: CREATE DATABASE newark
+2020-12-09 15:21:39,625-INFO-FILE:create_db.py-FUNC:use_db-LINE 36: mysql is using newark
+2020-12-09 15:21:39,677-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airports was created
+2020-12-09 15:21:39,730-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table status was created
+2020-12-09 15:21:39,849-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table all_flights was created
+2020-12-09 15:21:39,941-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table flights_numbers was created
+2020-12-09 15:21:40,024-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airline_per_flight was created
+2020-12-09 15:21:40,772-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:21:41,557-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:21:42,357-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:21:43,341-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:21:43,482-INFO-FILE:newark.py-FUNC:newark_df-LINE 205: Main website successfully converted to dataframe.
+2020-12-09 15:22:06,616-ERROR-FILE:newark.py-FUNC:get_df_row_g-LINE 160: Invalid website, request response: []
+2020-12-09 15:22:06,617-INFO-FILE:newark.py-FUNC:newark_df-LINE 213: Flight pages successfully converted to dataframe.
+2020-12-09 15:32:09,591-INFO-FILE:create_db.py-FUNC:create_database-LINE 22: CREATE DATABASE newark
+2020-12-09 15:32:09,592-INFO-FILE:create_db.py-FUNC:use_db-LINE 36: mysql is using newark
+2020-12-09 15:32:09,642-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airports was created
+2020-12-09 15:32:09,687-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table status was created
+2020-12-09 15:32:09,765-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table all_flights was created
+2020-12-09 15:32:09,803-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table flights_numbers was created
+2020-12-09 15:32:09,890-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airline_per_flight was created
+2020-12-09 15:32:10,626-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:32:11,476-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:32:12,269-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:32:13,190-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:32:13,321-INFO-FILE:newark.py-FUNC:newark_df-LINE 205: Main website successfully converted to dataframe.
+2020-12-09 15:32:35,489-ERROR-FILE:newark.py-FUNC:get_df_row_g-LINE 160: Invalid website, request response: []
+2020-12-09 15:32:35,490-INFO-FILE:newark.py-FUNC:newark_df-LINE 213: Flight pages successfully converted to dataframe.
+2020-12-09 15:34:00,298-INFO-FILE:create_db.py-FUNC:create_database-LINE 22: CREATE DATABASE newark
+2020-12-09 15:34:00,299-INFO-FILE:create_db.py-FUNC:use_db-LINE 36: mysql is using newark
+2020-12-09 15:34:00,347-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airports was created
+2020-12-09 15:34:00,373-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table status was created
+2020-12-09 15:34:00,430-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table all_flights was created
+2020-12-09 15:34:00,491-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table flights_numbers was created
+2020-12-09 15:34:00,561-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airline_per_flight was created
+2020-12-09 15:34:01,276-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:34:02,168-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:34:03,013-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:34:03,930-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:34:04,115-INFO-FILE:newark.py-FUNC:newark_df-LINE 205: Main website successfully converted to dataframe.
+2020-12-09 15:34:26,574-ERROR-FILE:newark.py-FUNC:get_df_row_g-LINE 160: Invalid website, request response: []
+2020-12-09 15:34:26,575-INFO-FILE:newark.py-FUNC:newark_df-LINE 213: Flight pages successfully converted to dataframe.
+2020-12-09 15:53:41,653-INFO-FILE:create_db.py-FUNC:create_database-LINE 22: CREATE DATABASE newark
+2020-12-09 15:53:41,654-INFO-FILE:create_db.py-FUNC:use_db-LINE 36: mysql is using newark
+2020-12-09 15:53:41,730-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airports was created
+2020-12-09 15:53:41,799-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table status was created
+2020-12-09 15:53:41,869-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table all_flights was created
+2020-12-09 15:53:41,934-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table flights_numbers was created
+2020-12-09 15:53:42,001-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airline_per_flight was created
+2020-12-09 15:53:42,707-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:53:43,487-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:53:44,277-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:53:45,254-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 15:53:45,385-INFO-FILE:newark.py-FUNC:newark_df-LINE 205: Main website successfully converted to dataframe.
+2020-12-09 15:54:08,536-ERROR-FILE:newark.py-FUNC:get_df_row_g-LINE 160: Invalid website, request response: []
+2020-12-09 15:54:08,536-INFO-FILE:newark.py-FUNC:newark_df-LINE 213: Flight pages successfully converted to dataframe.
+2020-12-09 16:05:56,786-INFO-FILE:create_db.py-FUNC:create_database-LINE 22: CREATE DATABASE newark
+2020-12-09 16:05:56,787-INFO-FILE:create_db.py-FUNC:use_db-LINE 36: mysql is using newark
+2020-12-09 16:05:56,824-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airports was created
+2020-12-09 16:05:56,887-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table status was created
+2020-12-09 16:05:56,974-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table all_flights was created
+2020-12-09 16:05:57,054-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table flights_numbers was created
+2020-12-09 16:05:57,092-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airline_per_flight was created
+2020-12-09 16:05:57,857-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:05:58,750-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:05:59,606-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:06:00,576-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:06:00,706-INFO-FILE:newark.py-FUNC:newark_df-LINE 205: Main website successfully converted to dataframe.
+2020-12-09 16:06:25,416-INFO-FILE:newark.py-FUNC:newark_df-LINE 213: Flight pages successfully converted to dataframe.
+2020-12-09 16:06:26,112-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:06:26,974-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:06:27,839-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:06:28,787-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:06:28,941-INFO-FILE:newark.py-FUNC:newark_df-LINE 205: Main website successfully converted to dataframe.
+2020-12-09 16:06:52,223-ERROR-FILE:newark.py-FUNC:get_df_row_g-LINE 160: Invalid website, request response: []
+2020-12-09 16:06:52,224-INFO-FILE:newark.py-FUNC:newark_df-LINE 213: Flight pages successfully converted to dataframe.
+2020-12-09 16:08:49,166-INFO-FILE:create_db.py-FUNC:create_database-LINE 22: CREATE DATABASE newark
+2020-12-09 16:08:49,167-INFO-FILE:create_db.py-FUNC:use_db-LINE 36: mysql is using newark
+2020-12-09 16:08:49,212-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airports was created
+2020-12-09 16:08:49,245-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table status was created
+2020-12-09 16:08:49,323-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table all_flights was created
+2020-12-09 16:08:49,444-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table flights_numbers was created
+2020-12-09 16:08:49,531-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airline_per_flight was created
+2020-12-09 16:08:50,210-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:08:51,009-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:08:51,825-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:08:52,887-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:08:53,062-INFO-FILE:newark.py-FUNC:newark_df-LINE 206: Main website successfully converted to dataframe.
+2020-12-09 16:09:17,053-INFO-FILE:newark.py-FUNC:newark_df-LINE 214: Flight pages successfully converted to dataframe.
+2020-12-09 16:09:17,749-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:09:18,563-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:09:19,347-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:09:20,252-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:09:20,395-INFO-FILE:newark.py-FUNC:newark_df-LINE 206: Main website successfully converted to dataframe.
+2020-12-09 16:09:44,356-ERROR-FILE:newark.py-FUNC:get_df_row_g-LINE 161: Invalid website, request response: []
+2020-12-09 16:09:44,357-INFO-FILE:newark.py-FUNC:newark_df-LINE 214: Flight pages successfully converted to dataframe.
+2020-12-09 16:15:19,494-INFO-FILE:create_db.py-FUNC:create_database-LINE 22: CREATE DATABASE newark
+2020-12-09 16:15:19,495-INFO-FILE:create_db.py-FUNC:use_db-LINE 36: mysql is using newark
+2020-12-09 16:15:19,536-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airports was created
+2020-12-09 16:15:19,616-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table status was created
+2020-12-09 16:15:19,732-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table all_flights was created
+2020-12-09 16:15:19,828-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table flights_numbers was created
+2020-12-09 16:15:19,917-INFO-FILE:create_db.py-FUNC:create_table-LINE 61: Table airline_per_flight was created
+2020-12-09 16:15:20,692-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:15:21,498-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:15:22,358-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:15:23,442-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:15:23,575-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-09 16:15:47,267-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-09 16:15:47,964-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:15:48,728-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:15:49,525-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:15:50,450-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:15:50,606-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-09 16:16:13,812-ERROR-FILE:newark.py-FUNC:get_df_row_g-LINE 159: Invalid website, request response: []
+2020-12-09 16:16:14,344-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:14,868-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:15,419-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:15,971-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:16,525-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:17,113-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:17,675-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:18,228-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:18,809-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:19,395-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:19,936-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:20,529-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:21,096-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:21,693-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:22,300-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:22,872-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:23,470-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:24,044-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:24,661-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:25,253-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:25,808-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:26,358-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:26,944-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:27,526-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:28,102-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:28,686-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:29,257-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:29,833-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:30,452-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:31,063-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:31,629-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:32,228-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:32,801-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:33,378-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:33,973-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:34,538-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:35,112-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:35,684-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:36,257-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:36,841-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:37,415-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:38,002-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:38,616-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:39,211-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:39,820-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:40,394-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:41,018-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:41,586-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:42,134-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:42,704-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:43,274-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:43,867-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:44,443-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:45,041-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:45,615-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:46,176-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:46,744-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:47,311-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:47,860-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:48,423-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:49,018-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:49,618-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:50,201-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:50,809-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:51,404-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:51,987-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:52,573-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:53,187-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:53,770-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:54,350-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:54,943-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:55,498-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:56,087-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:56,684-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:57,249-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:57,819-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:58,389-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:58,992-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:16:59,610-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:00,191-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:00,816-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:01,451-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:02,034-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:02,651-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:03,197-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:03,762-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:04,407-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:04,995-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:05,551-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:06,150-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:06,709-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:07,298-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:07,871-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:08,439-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:09,019-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:09,639-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:10,220-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:10,845-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:11,455-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:12,132-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:12,694-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:13,267-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:13,861-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:14,445-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:15,032-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:15,626-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:16,228-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:16,812-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:17,413-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:17,991-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:18,575-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:19,121-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:19,688-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:20,272-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:20,869-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:21,472-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:22,101-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:22,685-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:23,278-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:23,856-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:24,432-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:25,001-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:25,577-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:26,186-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:26,738-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:27,345-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:27,918-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:28,483-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:29,054-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:29,659-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:30,188-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:30,745-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:31,338-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:31,935-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:32,499-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:33,078-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:33,672-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:34,248-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:34,822-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:35,386-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:36,026-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:36,614-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:37,182-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:37,757-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:38,331-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:38,953-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:39,541-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:40,120-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:40,657-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:41,285-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:41,894-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:42,505-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:43,123-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:43,697-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:44,289-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:44,862-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:45,431-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:45,968-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:46,518-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:47,140-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:47,765-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:48,336-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:48,904-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:49,452-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:50,019-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:50,583-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:51,164-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:51,698-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:52,317-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:52,895-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:53,493-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:54,123-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:54,698-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:55,300-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:55,870-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:56,470-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:56,998-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:57,584-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:58,164-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:58,756-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:59,338-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:17:59,929-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:00,555-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:01,127-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:01,839-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:02,613-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:03,240-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:03,865-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:04,475-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:05,050-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:05,593-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:06,169-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:06,804-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:07,382-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:08,011-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:08,591-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:09,216-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:09,789-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:10,353-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:10,947-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:11,517-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:12,104-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:12,723-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:13,300-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:13,896-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:14,470-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:15,050-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:15,636-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:16,217-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:16,804-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:17,384-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:17,954-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:18,485-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:19,057-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:19,616-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:20,228-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:20,809-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:21,421-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:22,002-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:22,574-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:23,166-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:23,704-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:24,305-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:24,888-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:25,458-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:26,073-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:26,650-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:27,230-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:27,855-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:28,479-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:29,043-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:29,618-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:30,190-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:30,764-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:31,367-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:31,971-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:32,563-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:33,136-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:33,699-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:34,277-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:34,844-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:35,468-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:36,053-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:36,644-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:37,217-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:37,809-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:38,381-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:38,956-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:39,500-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:40,070-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:40,656-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:41,234-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:41,799-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:42,376-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:42,933-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:43,506-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:44,093-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:44,678-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:45,208-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:45,808-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:46,391-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:46,970-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:47,593-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:48,166-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:48,763-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:49,355-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:49,935-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:50,470-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:51,095-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:51,676-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:51,718-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-09 16:18:52,432-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:53,214-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:54,038-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:54,943-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:18:55,073-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-09 16:19:19,996-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-09 16:19:20,685-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:19:21,466-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:19:22,374-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:19:23,232-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:19:23,382-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-09 16:19:48,716-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-09 16:19:49,447-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:19:50,311-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:19:51,354-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:19:52,179-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-09 16:19:52,336-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-09 16:20:21,044-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-09 16:20:21,668-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 81: Insert values to table airports completed
+2020-12-09 16:20:21,677-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 81: Insert values to table status completed

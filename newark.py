@@ -145,7 +145,6 @@ def get_df_row_g(arr_depar, day, flight_num_list):
         resp = grequests.map(reqs)
         if not resp:
             logging.error(f'Invalid website, request response: {resp}')
-            return
         logging.debug(f'Website for flight pages successfully scrapped')
         for r in resp:
             sp = BeautifulSoup(r.content, "html.parser")
@@ -158,7 +157,7 @@ def get_df_row_g(arr_depar, day, flight_num_list):
     res = grequests.map(req)
     if not res:
         logging.error(f'Invalid website, request response: {res}')
-        return
+        return get_df_row(arr_depar, day, flight_num_list)
     logging.debug(f'Website for director info successfully scrapped')
     for r in res:
         s = BeautifulSoup(r.content, "html.parser")
