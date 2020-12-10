@@ -12,13 +12,13 @@ logging.basicConfig(filename='newark.log',
                     level=logging.INFO)
 
 
-def create_database(mydb,cursor):
-    '''
+def create_database(mydb, cursor):
+    """
     creating the database
     :param cursor: connection to mysql
     :param mydb: connection to mysql
     :return: None
-    '''
+    """
 
     try:
         cursor.execute("CREATE DATABASE {}".format(CFG.DB_NAME))
@@ -29,13 +29,14 @@ def create_database(mydb,cursor):
         print("Failed creating database: {}".format(err))
     mydb.commit()
 
-def use_db(mydb,cursor):
-    '''
+
+def use_db(mydb, cursor):
+    """
     Using database. if db doesn't exist - print a message and create it.
     :param cursor: connection to mysql
     :param mydb: connection to mysql
     :return: None
-    '''
+    """
     try:
         cursor.execute("USE {}".format(CFG.DB_NAME))
         logging.info('mysql is using {}'.format(CFG.DB_NAME))
@@ -49,17 +50,18 @@ def use_db(mydb,cursor):
             print("Database {} created successfully.".format(CFG.DB_NAME))
             mydb.database = CFG.DB_NAME
         else:
-            logging.error('Error trying using DATABASE {}. Error: {}'.format(CFG.DB_NAME,err))
+            logging.error('Error trying using DATABASE {}. Error: {}'.format(CFG.DB_NAME, err))
             print(err)
             exit(1)
 
-def create_table(mydb,cursor):
-    '''
+
+def create_table(mydb, cursor):
+    """
     Creating tables based on TABLES defined in config (if not exist already).
     :param cursor: connection to mysql
     :param mydb: connection to mysql
     :return: None
-    '''
+    """
     for table_name in CFG.TABLES:
         table_description = CFG.TABLES[table_name]
         try:
@@ -75,17 +77,18 @@ def create_table(mydb,cursor):
                 print(err.msg)
     mydb.commit()
 
-def insert_to_table(mydb,cursor,table,df):
-    '''
+
+def insert_to_table(mydb, cursor, table, df):
+    """
     Insert data from df to tables
     :param cursor: connection to mysql
     :param mydb: connection to mysql
     :param table: table to insert
     :param df: df to pull data from.
     :return: None
-    '''
+    """
     cols = ", ".join([str(i) for i in df.columns.tolist()])
-    for i,row in df.iterrows():
+    for i, row in df.iterrows():
         sql = '''INSERT INTO ''' + table + ''' (''' + cols + ''') VALUES (''' + '''%s,''' * (len(row) - 1) + '''%s)'''
         cursor.execute(sql, tuple(row))
     logging.info('Insert values to table {} completed'.format(table))
@@ -94,10 +97,10 @@ def insert_to_table(mydb,cursor,table,df):
 
 
 def connect_mysql():
-    '''
+    """
     creating connection to mysql
     :return: db instance and cursor to use for queries
-    '''
+    """
     connected = False
     while not connected:
         try:
@@ -108,20 +111,21 @@ def connect_mysql():
             logging.info('Connected to mysql')
             connected = True
         except mysql.connector.Error as err:
-            print("Connection to mysql failed. Please try again. Error: {}".format (err))
+            print("Connection to mysql failed. Please try again. Error: {}".format(err))
             logging.error('Connection to mysql failed')
 
-    return mydb,cursor
+    return mydb, cursor
+
 
 def create_all_df(cursor):
-    '''
+    """
     create 6 df for each information kind.
-    concating all df to one df all_flights_df
+    concatenation all df to one df all_flights_df
     connect to mysql to check if there is a table and match the index of the new scarped info
     fixing the index.
     :param cursor: connection to mysql
     :return: all_df which is the big df of the last scraping
-    '''
+    """
 
     print('Scraping data from website... please wait')
 
@@ -130,7 +134,7 @@ def create_all_df(cursor):
     arrivals_df_tom = newark_df('arrivals', 'tomorrow')
     arrivals_df_yes = newark_df('arrivals', 'yesterday')
     departures_df_tod = newark_df('departures', 'today')
-    #departures_df_tom = newark_df('departures', 'tomorrow')
+    # departures_df_tom = newark_df('departures', 'tomorrow')
     departures_df_yes = newark_df('departures', 'yesterday')
     logging.info('Data scraped successfully')
 
@@ -138,8 +142,8 @@ def create_all_df(cursor):
     all_df = pd.concat([arrivals_df_tod, arrivals_df_tom, arrivals_df_yes, departures_df_tod, departures_df_yes])
     all_df.drop_duplicates(inplace=True)
 
-    #checking the last index in the table all_flights(if exist)
-    #if so - defining the first index of the scraped table to match
+    # checking the last index in the table all_flights(if exist)
+    # if so - defining the first index of the scraped table to match
     cursor.execute("select flight_id from all_flights order by flight_id DESC LIMIT 1")
     last_ind = cursor.fetchall()
     if last_ind:
@@ -152,60 +156,63 @@ def create_all_df(cursor):
 
 
 def create_small_df(all_df):
-    '''
+    """
     creating small df for the tables
     :param all_df: the big df from scraping
     :return: df to match the tables in db
-    '''
+    """
     airports = airports_df(all_df)
     status = status_df(all_df)
     all_flights = all_flights_df(all_df)
     flights_numbers = flights_numbers_df(all_df)
     airline_per_flight = airline_per_flight_df(all_df)
     logging.info('small df created')
-    return airports,status,all_flights,flights_numbers,airline_per_flight
+    return airports, status, all_flights, flights_numbers, airline_per_flight
 
-def create_db_tables(mydb,cursor):
-    '''
+
+def create_db_tables(mydb, cursor):
+    """
     create the db and tables in mysql
-    :param mydb: conncetion to db
+    :param mydb: connection to db
     :param cursor: executing commands
     :return: None
-    '''
-    create_database(mydb,cursor)
-    use_db(mydb,cursor)
-    create_table(mydb,cursor)
+    """
+    create_database(mydb, cursor)
+    use_db(mydb, cursor)
+    create_table(mydb, cursor)
 
-def insert_info_to_tables(mydb,cursor):
-    '''
+
+def insert_info_to_tables(mydb, cursor):
+    """
     insert info from df to tables
     :return: None
-    '''
+    """
     all_df = create_all_df(cursor)
     airports, status, all_flights, flights_numbers, airline_per_flight = create_small_df(all_df)
 
-    insert_to_table(mydb,cursor,'airports',airports)
+    insert_to_table(mydb, cursor, 'airports', airports)
     insert_to_table(mydb, cursor, 'status', status)
     insert_to_table(mydb, cursor, 'all_flights', all_flights)
     insert_to_table(mydb, cursor, 'flights_numbers', flights_numbers)
     insert_to_table(mydb, cursor, 'airline_per_flight', airline_per_flight)
 
 
-def close_connection(mydb,cursor):
-    '''
+def close_connection(mydb, cursor):
+    """
     closing connection to mysql
-    :param mydb: conncetion to db
-    :param cursor: conncetion to db
+    :param mydb: connection to db
+    :param cursor: connection to db
     :return: None
-    '''
+    """
     cursor.close()
     mydb.close()
 
+
 def wrapper_db():
     mydb, cursor = connect_mysql()
-    create_db_tables(mydb,cursor)
-    insert_info_to_tables(mydb,cursor)
-    close_connection(mydb,cursor)
+    create_db_tables(mydb, cursor)
+    insert_info_to_tables(mydb, cursor)
+    close_connection(mydb, cursor)
 
 
-
+wrapper_db()

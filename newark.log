@@ -3562,3 +3562,241 @@
 2020-12-10 10:19:01,882-ERROR-FILE:create_db.py-FUNC:create_table-LINE 72: Trying to create table that already exist
 2020-12-10 10:19:03,005-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
 2020-12-10 10:19:03,947-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 11:22:28,517-INFO-FILE:create_db.py-FUNC:connect_mysql-LINE 111: Connected to mysql
+2020-12-10 11:22:28,522-ERROR-FILE:create_db.py-FUNC:create_database-LINE 28: Failed creating database: 1007 (HY000): Can't create database 'newark'; database exists
+2020-12-10 11:22:28,524-INFO-FILE:create_db.py-FUNC:use_db-LINE 42: mysql is using newark
+2020-12-10 11:22:28,537-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 11:22:28,542-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 11:22:28,547-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 11:22:28,550-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 11:22:28,551-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 11:22:29,655-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 11:22:30,775-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 11:22:32,155-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 11:22:34,496-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 11:22:35,734-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 11:23:46,249-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 11:23:46,928-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 11:23:48,621-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 11:23:49,942-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 11:23:51,824-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 11:23:52,479-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 12:05:06,216-INFO-FILE:create_db.py-FUNC:connect_mysql-LINE 111: Connected to mysql
+2020-12-10 12:05:06,222-ERROR-FILE:create_db.py-FUNC:create_database-LINE 28: Failed creating database: 1007 (HY000): Can't create database 'newark'; database exists
+2020-12-10 12:05:06,223-INFO-FILE:create_db.py-FUNC:use_db-LINE 42: mysql is using newark
+2020-12-10 12:05:06,231-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 12:05:06,233-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 12:05:06,237-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 12:05:06,239-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 12:05:06,241-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 12:05:08,461-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:05:12,525-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:05:14,869-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:05:16,649-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:05:18,713-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 12:06:52,478-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 12:06:53,599-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:06:54,870-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:06:56,295-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:06:59,196-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:06:59,818-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 12:08:16,364-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 12:08:18,955-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:08:20,590-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:08:23,294-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:08:26,169-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:08:26,609-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 12:09:53,564-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 12:09:55,924-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:09:57,471-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:10:03,988-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:10:06,209-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:10:07,038-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 12:12:04,528-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 12:12:06,082-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:12:07,548-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:12:09,959-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:12:12,036-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 12:12:13,144-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 12:14:00,338-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 12:14:00,353-INFO-FILE:create_db.py-FUNC:create_all_df-LINE 139: Data scraped successfully
+2020-12-10 12:14:00,521-INFO-FILE:create_db.py-FUNC:create_all_df-LINE 153: all_df created
+2020-12-10 12:14:02,391-INFO-FILE:create_db.py-FUNC:create_small_df-LINE 169: small df created
+2020-12-10 12:14:02,605-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 94: Insert values to table airports completed
+2020-12-10 12:14:02,661-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 94: Insert values to table status completed
+2020-12-10 12:14:05,905-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 94: Insert values to table all_flights completed
+2020-12-10 12:14:14,174-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 94: Insert values to table flights_numbers completed
+2020-12-10 12:14:21,535-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 94: Insert values to table airline_per_flight completed
+2020-12-10 16:38:52,537-INFO-FILE:create_db.py-FUNC:connect_mysql-LINE 111: Connected to mysql
+2020-12-10 16:38:52,553-INFO-FILE:create_db.py-FUNC:create_database-LINE 25: CREATE DATABASE newark
+2020-12-10 16:38:52,553-INFO-FILE:create_db.py-FUNC:use_db-LINE 42: mysql is using newark
+2020-12-10 16:38:52,647-INFO-FILE:create_db.py-FUNC:create_table-LINE 70: Table airports was created
+2020-12-10 16:38:52,693-INFO-FILE:create_db.py-FUNC:create_table-LINE 70: Table status was created
+2020-12-10 16:38:52,850-INFO-FILE:create_db.py-FUNC:create_table-LINE 70: Table all_flights was created
+2020-12-10 16:38:52,959-INFO-FILE:create_db.py-FUNC:create_table-LINE 70: Table flights_numbers was created
+2020-12-10 16:38:53,053-INFO-FILE:create_db.py-FUNC:create_table-LINE 70: Table airline_per_flight was created
+2020-12-10 16:38:54,256-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:38:55,350-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:38:56,646-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:38:58,177-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:38:58,740-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 16:39:40,692-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 16:39:41,442-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:39:42,439-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:39:43,578-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:39:45,015-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:39:45,531-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 16:40:21,650-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 16:40:22,354-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:40:23,466-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:40:24,809-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:40:25,958-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:40:26,431-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 16:41:05,060-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 16:41:05,827-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:41:06,880-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:41:08,742-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:41:10,137-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:41:10,664-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 16:41:52,242-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 16:41:52,973-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:41:53,973-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:41:55,457-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:41:56,743-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 16:41:57,253-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 16:42:36,661-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 16:42:36,676-INFO-FILE:create_db.py-FUNC:create_all_df-LINE 139: Data scraped successfully
+2020-12-10 16:42:36,760-INFO-FILE:create_db.py-FUNC:create_all_df-LINE 153: all_df created
+2020-12-10 16:42:38,323-INFO-FILE:create_db.py-FUNC:create_small_df-LINE 169: small df created
+2020-12-10 16:42:38,413-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 94: Insert values to table airports completed
+2020-12-10 16:42:38,433-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 94: Insert values to table status completed
+2020-12-10 16:42:39,515-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 94: Insert values to table all_flights completed
+2020-12-10 16:42:41,164-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 94: Insert values to table flights_numbers completed
+2020-12-10 16:42:44,508-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 94: Insert values to table airline_per_flight completed
+2020-12-10 17:56:37,693-INFO-FILE:create_db.py-FUNC:connect_mysql-LINE 111: Connected to mysql
+2020-12-10 17:56:37,708-ERROR-FILE:create_db.py-FUNC:create_database-LINE 28: Failed creating database: 1007 (HY000): Can't create database 'newark'; database exists
+2020-12-10 17:56:37,708-INFO-FILE:create_db.py-FUNC:use_db-LINE 42: mysql is using newark
+2020-12-10 17:56:37,708-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 17:56:37,724-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 17:56:37,724-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 17:56:37,739-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 17:56:37,739-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 17:56:38,958-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 17:56:40,333-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 17:56:42,192-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 17:56:44,302-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 17:56:44,801-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 17:57:36,262-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 17:57:37,387-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 17:57:38,762-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 17:57:40,199-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 17:57:41,949-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 17:57:42,402-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 17:58:25,243-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 17:58:26,274-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 17:58:27,711-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 17:58:29,289-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 17:58:31,039-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 17:58:31,586-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 17:59:15,614-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 17:59:16,348-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 17:59:17,536-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 17:59:19,192-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 17:59:20,520-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 17:59:21,082-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 18:00:06,329-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 18:00:07,126-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:00:08,313-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:00:09,782-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:00:10,969-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:00:11,469-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 18:00:49,510-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 18:00:49,510-INFO-FILE:create_db.py-FUNC:create_all_df-LINE 139: Data scraped successfully
+2020-12-10 18:00:49,572-INFO-FILE:create_db.py-FUNC:create_all_df-LINE 153: all_df created
+2020-12-10 18:57:28,377-INFO-FILE:create_db.py-FUNC:connect_mysql-LINE 111: Connected to mysql
+2020-12-10 18:57:28,377-ERROR-FILE:create_db.py-FUNC:create_database-LINE 28: Failed creating database: 1007 (HY000): Can't create database 'newark'; database exists
+2020-12-10 18:57:28,377-INFO-FILE:create_db.py-FUNC:use_db-LINE 42: mysql is using newark
+2020-12-10 18:57:28,377-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 18:57:28,393-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 18:57:28,393-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 18:57:28,393-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 18:57:28,409-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 18:57:29,252-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:57:30,299-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:57:31,658-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:57:33,158-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:57:33,752-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 18:58:16,483-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 18:58:17,249-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:58:18,249-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:58:19,421-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:58:20,889-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:58:21,452-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 18:58:57,184-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 18:58:58,027-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:58:59,059-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:59:00,215-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:59:01,590-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:59:02,168-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 18:59:40,196-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 18:59:40,915-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:59:41,930-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:59:43,368-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:59:44,852-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 18:59:45,461-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 19:00:34,333-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 19:00:35,083-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:00:36,083-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:00:37,583-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:00:38,864-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:00:39,317-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 19:01:19,314-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 19:01:19,330-INFO-FILE:create_db.py-FUNC:create_all_df-LINE 139: Data scraped successfully
+2020-12-10 19:01:19,377-INFO-FILE:create_db.py-FUNC:create_all_df-LINE 153: all_df created
+2020-12-10 19:02:13,326-INFO-FILE:create_db.py-FUNC:connect_mysql-LINE 111: Connected to mysql
+2020-12-10 19:06:10,214-INFO-FILE:create_db.py-FUNC:connect_mysql-LINE 111: Connected to mysql
+2020-12-10 19:06:10,214-ERROR-FILE:create_db.py-FUNC:create_database-LINE 28: Failed creating database: 1007 (HY000): Can't create database 'newark'; database exists
+2020-12-10 19:06:10,214-INFO-FILE:create_db.py-FUNC:use_db-LINE 42: mysql is using newark
+2020-12-10 19:06:10,214-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 19:06:10,214-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 19:06:10,230-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 19:06:10,230-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 19:06:10,230-ERROR-FILE:create_db.py-FUNC:create_table-LINE 74: Trying to create table that already exist
+2020-12-10 19:06:11,073-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:06:11,995-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:06:13,105-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:06:14,620-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:06:15,198-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 19:06:56,825-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 19:06:57,497-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:06:58,481-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:06:59,528-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:07:01,012-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:07:01,465-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 19:07:37,119-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 19:07:37,838-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:07:38,885-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:07:39,994-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:07:41,431-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:07:41,900-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 19:08:18,741-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 19:08:19,491-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:08:20,460-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:08:21,866-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:08:23,178-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:08:23,741-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 19:09:05,769-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 19:09:06,488-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:09:07,425-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:09:08,910-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:09:10,097-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 19:09:10,675-INFO-FILE:newark.py-FUNC:newark_df-LINE 204: Main website successfully converted to dataframe.
+2020-12-10 19:09:47,188-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
+2020-12-10 19:09:47,188-INFO-FILE:create_db.py-FUNC:create_all_df-LINE 139: Data scraped successfully
+2020-12-10 19:09:47,219-INFO-FILE:create_db.py-FUNC:create_all_df-LINE 153: all_df created
+2020-12-10 19:09:48,375-INFO-FILE:create_db.py-FUNC:create_small_df-LINE 169: small df created
+2020-12-10 19:09:48,485-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 94: Insert values to table airports completed
+2020-12-10 19:09:48,500-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 94: Insert values to table status completed
+2020-12-10 19:09:49,735-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 94: Insert values to table all_flights completed
+2020-12-10 19:09:51,500-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 94: Insert values to table flights_numbers completed
+2020-12-10 19:09:53,109-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 94: Insert values to table airline_per_flight completed

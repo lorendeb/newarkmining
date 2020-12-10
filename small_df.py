@@ -1,21 +1,92 @@
 import pandas as pd
 from newark import newark_df
 import re
+import mysql.connector
+from mysql.connector import errorcode
 
+user_name = input('Please enter username for MySql (usually root)')
+password = input('Please enter password for MySql')
+mydb = mysql.connector.connect(user=user_name, password=password, host='localhost')
+cursor = mydb.cursor()
 
 def airports_df(all_df):
-    airports_dict = {}
-    for index, row in all_df.iterrows():
-        airports_dict[row['airport']] = row['iata'].strip()
-    airports = pd.DataFrame(list(airports_dict.items()), columns=['airport', 'iata'])
-    airports.index = airports.index + 1
-    return airports
+    # checking if table airports exist:
+    try:
+        cursor.execute("select * from airports")
+        # checking if table not empty
+        q_result = cursor.fetchall()
+        if q_result:
+            # creating dict of index:[airport,iata] for old airports
+            airport_dict = {index: [airport, iata] for index, airport, iata in cursor.fetchall()}
+            # list of all former airports to compare
+            former_airports_list = [i[0] for i in list(airport_dict.values())]
+            # checking what is the last index
+            last_ind = max(airport_dict.keys())
+            new_ap_dict = {}
+            # checking if the new airport name is in the oldies list
+            for index, row in all_df.iterrows():
+                if row['airport'] not in former_airports:
+                    # if so - add to the new dict the index and name and iata
+                    new_ap_dict[last_ind + 1] = [row['airport'], row['iata']]
+                    last_ind += 1
+            # concat 2 dicts
+            airport_dict = airport_dict.update(new_ap_dict)
+            # create df
+            airports = pd.DataFrame(list(airports_dict.items()), columns=['airport', 'iata'])
+            return airports
+
+        # if table is empty
+        else:
+            airports_dict = {}
+            for index, row in all_df.iterrows():
+                airports_dict[row['airport']] = row['iata'].strip()
+            airports = pd.DataFrame(list(airports_dict.items()), columns=['airport', 'iata'])
+            airports.index = airports.index + 1
+            return airports
+
+    except mysql.connector.Error as err:
+        airports_dict = {}
+        for index, row in all_df.iterrows():
+            airports_dict[row['airport']] = row['iata'].strip()
+        airports = pd.DataFrame(list(airports_dict.items()), columns=['airport', 'iata'])
+        airports.index = airports.index + 1
+        return airports
 
 
 def status_df(all_df):
-    status = pd.DataFrame(all_df['status'].unique(), columns=['status'])
-    status.index = status.index + 1
-    return status
+    # checking if table status exist:
+    try:
+        cursor.execute("select * from status")
+        # checking if table not empty
+        q_result = cursor.fetchall()
+        if q_result:
+            # dictionary that contain former status from query
+            status_dict = {index: status for index, status in q_result}
+            # list that contain new status from df ant not in the former dict
+            new_status = [i for i in all_df['status'].unique() if not i in status_dict.values()]
+            # checking what index give the new status
+            last_ind = max(status_dict.keys())
+            # looping over the list too
+            ind_for_new = 0
+            for i in range(last_ind + 1, last_ind + len(new_status) + 1):
+                # adding the new status to th dict
+                status_dict[i] = new_status[ind_for_new]
+                ind_for_new += 1
+            # make df from the new dictinary
+            status = pd.DataFrame(all_df['status'].unique(), columns=['status'])
+            return status
+        # if table exist but empty
+        else:
+            status = pd.DataFrame(all_df['status'].unique(), columns=['status'])
+            status.index = status.index + 1
+            return status
+
+    # if it's the first scrape - create status df:
+    except mysql.connector.Error as err:
+        # logging.error('first scraping')
+        status = pd.DataFrame(all_df['status'].unique(), columns=['status'])
+        status.index = status.index + 1
+        return status
 
 
 def all_flights_df(all_df):
