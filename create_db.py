@@ -4,8 +4,10 @@ from mysql.connector import errorcode
 from newark import *
 from small_df import *
 import numpy as np
+from query_api import *
 import config as CFG
 import logging
+
 
 logging.basicConfig(filename='newark.log',
                     format='%(asctime)s-%(levelname)s-FILE:%(filename)s-FUNC:%(funcName)s-LINE %(lineno)d: %(message)s',
@@ -13,12 +15,12 @@ logging.basicConfig(filename='newark.log',
 
 
 def create_database(mydb,cursor):
-    '''
+    """
     creating the database
     :param cursor: connection to mysql
     :param mydb: connection to mysql
     :return: None
-    '''
+    """
 
     try:
         cursor.execute("CREATE DATABASE {}".format(CFG.DB_NAME))
@@ -30,12 +32,12 @@ def create_database(mydb,cursor):
     mydb.commit()
 
 def use_db(mydb,cursor):
-    '''
+    """
     Using database. if db doesn't exist - print a message and create it.
     :param cursor: connection to mysql
     :param mydb: connection to mysql
     :return: None
-    '''
+    """
     try:
         cursor.execute("USE {}".format(CFG.DB_NAME))
         logging.info('mysql is using {}'.format(CFG.DB_NAME))
@@ -54,12 +56,12 @@ def use_db(mydb,cursor):
             exit(1)
 
 def create_table(mydb,cursor):
-    '''
+    """
     Creating tables based on TABLES defined in config (if not exist already).
     :param cursor: connection to mysql
     :param mydb: connection to mysql
     :return: None
-    '''
+    """
     for table_name in CFG.TABLES:
         table_description = CFG.TABLES[table_name]
         try:
@@ -205,6 +207,7 @@ def wrapper_db():
     mydb, cursor = connect_mysql()
     create_db_tables(mydb,cursor)
     insert_info_to_tables(mydb,cursor)
+    update_api_airport(mydb, cursor, get_list_iata(cursor), get_df_api(get_list_iata(cursor)))
     close_connection(mydb,cursor)
 
 

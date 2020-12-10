@@ -2,13 +2,21 @@ import requests
 import config as CFG
 import pandas as pd
 import logging
-import pymysql
 import re
 
 
 def get_df_api(list_of_iata):
+    """
+    build df from api query
+    :param list_of_iata: list of iata
+    :return: df
+    """
     querystring = CFG.querystring
     list_dict_api = []
+    if not querystring:
+        logging.error(f'Invalid website for airports details to query')
+        raise ValueError('Site for airports details does not respond. Impossible to scrap')
+    logging.info(f'Airports details successfully scrapped')
     for iata in list_of_iata:
         querystring[CFG.IATA]=iata
         headers = CFG.headers
@@ -18,6 +26,11 @@ def get_df_api(list_of_iata):
 
 
 def get_list_iata(cursor):
+    """
+    get list of iata from airports table
+    :param cursor: cursor on database newark
+    :return: list of iata
+    """
     cursor.execute(CFG.query_list_iata)
     tuple_of_iata = cursor.fetchall()
     list_of_iata = [re.sub(r'\W+', '', elem[0]) for elem in tuple_of_iata]
@@ -25,6 +38,12 @@ def get_list_iata(cursor):
 
 
 def add_column_airport(mydb, cursor):
+    """
+    add new column to table airports from db newark
+    :param mydb: connection to newark
+    :param cursor: instance of mydb
+    :return: none
+    """
     for column in CFG.api_columns:
         query_add_column = '''ALTER TABLE airports ADD '''+ column + ''' VARCHAR(255)'''
         cursor.execute(query_add_column)
@@ -34,13 +53,22 @@ def add_column_airport(mydb, cursor):
 
 
 def update_api_airport(mydb, cursor, list_of_iata, df_api):
+    """
+    update api columns of table airports with data from api query
+    :param mydb: connection to newark
+    :param cursor: instance od newark
+    :param list_of_iata: list of iata
+    :param df_api: scrapping api query
+    :return: none
+    """
     cursor.execute(CFG.query_list_columns)
     columns_names = cursor.fetchall()
-    if len(columns_names)==3:
+    if len(columns_names) == 3:
         add_column_airport(mydb, cursor)
     cursor.execute(CFG.query_safe_updates_0)
+    logging.info('Add API data to airports column')
+    print('Add API data to airports column')
     for iata in list_of_iata:
-        # cursor.execute("""UPDATE airports set latitude=%s WHERE iata=%s""",(df_api[df_api['iata'] == iata]['latitude'].iloc[0],iata))
         cursor.execute(CFG.query_update_airport_table, (df_api[df_api['iata'] == iata]['icao'].iloc[0],
                                                         df_api[df_api['iata'] == iata]['name'].iloc[0],
                                                         df_api[df_api['iata'] == iata]['location'].iloc[0],
@@ -58,17 +86,3 @@ def update_api_airport(mydb, cursor, list_of_iata, df_api):
     mydb.commit()
     cursor.execute(CFG.query_safe_updates_1)
 
-
-user_name = 'root'
-password = 'soeursDER4'
-mydb = pymysql.connect(user=user_name, password=password, host='localhost')
-cursor = mydb.cursor()
-cursor.execute("USE newark")
-
-
-update_api_airport(mydb,cursor,get_list_iata(cursor),get_df_api(get_list_iata(cursor)))
-# cursor.execute(CFG.query_safe_updates_0)
-# cursor.execute('UPDATE airports set icao=%s WHERE iata=%s',('voila','IAD'))
-# print(cursor.fetchall())
-# mydb.commit()
-# cursor.execute(CFG.query_safe_updates_1)
