@@ -3546,3 +3546,19 @@
 2020-12-09 16:20:21,044-INFO-FILE:newark.py-FUNC:newark_df-LINE 212: Flight pages successfully converted to dataframe.
 2020-12-09 16:20:21,668-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 81: Insert values to table airports completed
 2020-12-09 16:20:21,677-INFO-FILE:create_db.py-FUNC:insert_to_table-LINE 81: Insert values to table status completed
+2020-12-10 10:13:31,926-ERROR-FILE:create_db.py-FUNC:connect_mysql-LINE 109: Connection to mysql failed
+2020-12-10 10:17:46,367-ERROR-FILE:create_db.py-FUNC:connect_mysql-LINE 111: Connection to mysql failed
+2020-12-10 10:18:42,980-ERROR-FILE:create_db.py-FUNC:connect_mysql-LINE 112: Connection to mysql failed
+2020-12-10 10:18:46,684-ERROR-FILE:create_db.py-FUNC:connect_mysql-LINE 112: Connection to mysql failed
+2020-12-10 10:18:52,824-ERROR-FILE:create_db.py-FUNC:connect_mysql-LINE 112: Connection to mysql failed
+2020-12-10 10:18:57,754-ERROR-FILE:create_db.py-FUNC:connect_mysql-LINE 112: Connection to mysql failed
+2020-12-10 10:19:01,810-INFO-FILE:create_db.py-FUNC:connect_mysql-LINE 108: Connected to mysql
+2020-12-10 10:19:01,815-ERROR-FILE:create_db.py-FUNC:create_database-LINE 28: Failed creating database: 1007 (HY000): Can't create database 'newark'; database exists
+2020-12-10 10:19:01,817-INFO-FILE:create_db.py-FUNC:use_db-LINE 41: mysql is using newark
+2020-12-10 10:19:01,836-ERROR-FILE:create_db.py-FUNC:create_table-LINE 72: Trying to create table that already exist
+2020-12-10 10:19:01,870-ERROR-FILE:create_db.py-FUNC:create_table-LINE 72: Trying to create table that already exist
+2020-12-10 10:19:01,877-ERROR-FILE:create_db.py-FUNC:create_table-LINE 72: Trying to create table that already exist
+2020-12-10 10:19:01,879-ERROR-FILE:create_db.py-FUNC:create_table-LINE 72: Trying to create table that already exist
+2020-12-10 10:19:01,882-ERROR-FILE:create_db.py-FUNC:create_table-LINE 72: Trying to create table that already exist
+2020-12-10 10:19:03,005-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
+2020-12-10 10:19:03,947-INFO-FILE:newark.py-FUNC:get_soup-LINE 39: Website successfully scrapped
