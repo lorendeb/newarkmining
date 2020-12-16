@@ -1,9 +1,9 @@
 from __future__ import print_function
 import mysql.connector
-from mysql.connector import errorcode
-from newark import *
 from small_df import *
 import numpy as np
+from mysql.connector import errorcode
+from newark import *
 from query_api import *
 import config as CFG
 import logging
@@ -46,7 +46,7 @@ def use_db(mydb,cursor):
         logging.error("Database {} does not exists.".format(CFG.DB_NAME))
         print("Database {} does not exists.".format(CFG.DB_NAME))
         if err.errno == errorcode.ER_BAD_DB_ERROR:
-            create_database(cursor)
+            create_database(mydb,cursor)
             logging.info("Database {} created successfully.".format(CFG.DB_NAME))
             print("Database {} created successfully.".format(CFG.DB_NAME))
             mydb.database = CFG.DB_NAME
@@ -153,15 +153,15 @@ def create_all_df(cursor):
     return all_df
 
 
-def create_small_df(all_df):
+def create_small_df(all_df,cursor):
     '''
     creating small df for the tables
     :param all_df: the big df from scraping
     :return: df to match the tables in db
     '''
-    airports = airports_df(all_df)
-    status = status_df(all_df)
-    all_flights = all_flights_df(all_df)
+    airports = airports_df(all_df,cursor)
+    status = status_df(all_df,cursor)
+    all_flights = all_flights_df(all_df,cursor)
     flights_numbers = flights_numbers_df(all_df)
     airline_per_flight = airline_per_flight_df(all_df)
     logging.info('small df created')
@@ -184,7 +184,7 @@ def insert_info_to_tables(mydb,cursor):
     :return: None
     '''
     all_df = create_all_df(cursor)
-    airports, status, all_flights, flights_numbers, airline_per_flight = create_small_df(all_df)
+    airports, status, all_flights, flights_numbers, airline_per_flight = create_small_df(all_df,cursor)
 
     insert_to_table(mydb,cursor,'airports',airports)
     insert_to_table(mydb, cursor, 'status', status)
@@ -202,13 +202,6 @@ def close_connection(mydb,cursor):
     '''
     cursor.close()
     mydb.close()
-
-def wrapper_db():
-    mydb, cursor = connect_mysql()
-    create_db_tables(mydb,cursor)
-    insert_info_to_tables(mydb,cursor)
-    update_api_airport(mydb, cursor, get_list_iata(cursor), get_df_api(get_list_iata(cursor)))
-    close_connection(mydb,cursor)
 
 
 

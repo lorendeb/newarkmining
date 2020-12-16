@@ -1,7 +1,15 @@
-from newark import newark_df
-from create_db import wrapper_db
-import config as CFG
+from create_db import *
 import argparse
+from query_api import *
+import config as CFG
+
+
+def wrapper_db():
+    mydb, cursor = connect_mysql()
+    create_db_tables(mydb,cursor)
+    insert_info_to_tables(mydb,cursor)
+    update_api_airport(mydb, cursor, get_list_iata(cursor), get_df_api(get_list_iata(cursor)))
+    close_connection(mydb,cursor)
 
 
 def main():
@@ -81,7 +89,6 @@ def main():
                     flight_num[index], prep, dest[index], term[index], gate[index], airline[index],
                     status[index]
                 ))
-
 
         else:
             print('No flight are meeting our filters ! ')

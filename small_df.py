@@ -1,15 +1,8 @@
 import pandas as pd
-from newark import newark_df
-import re
 import mysql.connector
-from mysql.connector import errorcode
 
-user_name = input('Please enter username for MySql (usually root)')
-password = input('Please enter password for MySql')
-mydb = mysql.connector.connect(user=user_name, password=password, host='localhost')
-cursor = mydb.cursor()
 
-def airports_df(all_df):
+def airports_df(all_df,cursor):
     # checking if table airports exist:
     try:
         cursor.execute("select * from airports")
@@ -25,14 +18,14 @@ def airports_df(all_df):
             new_ap_dict = {}
             # checking if the new airport name is in the oldies list
             for index, row in all_df.iterrows():
-                if row['airport'] not in former_airports:
+                if row['airport'] not in former_airports_list:
                     # if so - add to the new dict the index and name and iata
                     new_ap_dict[last_ind + 1] = [row['airport'], row['iata']]
                     last_ind += 1
             # concat 2 dicts
             airport_dict = airport_dict.update(new_ap_dict)
             # create df
-            airports = pd.DataFrame(list(airports_dict.items()), columns=['airport', 'iata'])
+            airports = pd.DataFrame(list(airport_dict.items()), columns=['airport', 'iata'])
             return airports
 
         # if table is empty
@@ -53,7 +46,7 @@ def airports_df(all_df):
         return airports
 
 
-def status_df(all_df):
+def status_df(all_df,cursor):
     # checking if table status exist:
     try:
         cursor.execute("select * from status")
@@ -89,12 +82,12 @@ def status_df(all_df):
         return status
 
 
-def all_flights_df(all_df):
-    airports = airports_df(all_df)
+def all_flights_df(all_df,cursor):
+    airports = airports_df(all_df,cursor)
     airports_dict = {v: k for k, v in airports.to_dict()['airport'].items()}
     airport_id = all_df['airport'].replace(airports_dict)
 
-    status = status_df(all_df)
+    status = status_df(all_df,cursor)
     status_dict = {v: k for k, v in status.to_dict()['status'].items()}
     status_id = all_df['status'].replace(status_dict)
 
