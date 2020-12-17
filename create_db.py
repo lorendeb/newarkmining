@@ -108,7 +108,7 @@ def connect_mysql():
             password = input('Please enter password for MySql')
             mydb = mysql.connector.connect(user=user_name, password=password, host='localhost',use_unicode=True)
             cursor = mydb.cursor()
-            cursor.execute('SET NAMES latin1')
+            cursor.execute('SET NAMES utf8mb4')
             cursor.execute("SET CHARACTER SET utf8mb4")
             cursor.execute("SET character_set_connection=utf8mb4")
             logging.info('Connected to mysql')
