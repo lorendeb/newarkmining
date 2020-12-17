@@ -106,8 +106,11 @@ def connect_mysql():
         try:
             user_name = input('Please enter username for MySql (usually root)')
             password = input('Please enter password for MySql')
-            mydb = mysql.connector.connect(user=user_name, password=password, host='localhost',charset="utf8mb4")
+            mydb = mysql.connector.connect(user=user_name, password=password, host='localhost',use_unicode=True)
             cursor = mydb.cursor()
+            cursor.execute('SET NAMES utf8mb4')
+            cursor.execute("SET CHARACTER SET utf8mb4")
+            cursor.execute("SET character_set_connection=utf8mb4")
             logging.info('Connected to mysql')
             connected = True
         except mysql.connector.Error as err:
