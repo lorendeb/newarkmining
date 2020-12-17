@@ -68,6 +68,7 @@ def update_api_airport(mydb, cursor, list_of_iata, df_api):
     cursor.execute(CFG.query_safe_updates_0)
     logging.info('Add API data to airports column')
     print('Add API data to airports column')
+    cursor.execute('ALTER TABLE airports CONVERT TO CHARACTER SET UTF8MB4;')
     for iata in list_of_iata:
         cursor.execute(CFG.query_update_airport_table, (df_api[df_api['iata'] == iata]['icao'].iloc[0],
                                                         df_api[df_api['iata'] == iata]['name'].iloc[0],
