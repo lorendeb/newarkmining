@@ -106,7 +106,7 @@ def connect_mysql():
         try:
             user_name = input('Please enter username for MySql (usually root)')
             password = input('Please enter password for MySql')
-            mydb = mysql.connector.connect(user=user_name, password=password, host='localhost')
+            mydb = mysql.connector.connect(user=user_name, password=password, host='localhost',charset="utf8mb4")
             cursor = mydb.cursor()
             logging.info('Connected to mysql')
             connected = True
